@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './pages/home'
-import './comm/comm.less';
+import './static/css/comm.less';
 
 function App() {
   return (

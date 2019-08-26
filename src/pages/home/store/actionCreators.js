@@ -11,6 +11,10 @@ export const getHomeAction = (data)=>({
 	data
 })
 
+
+
+
+
 export const getHome = () => {
 	return (dispatch) => {
 		getHomeList().then(res => {
