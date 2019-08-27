@@ -9,3 +9,12 @@ export const getHomeList = (token)=>{
         method: 'get'
     })
 }
+export const getHomeListPage = (page)=>{
+    return axios.request({
+        url: '/api/article_list/?page='+page,
+        /*  headers: {
+              'Authorization':'JWT '+''
+          },*/
+        method: 'get'
+    })
+}

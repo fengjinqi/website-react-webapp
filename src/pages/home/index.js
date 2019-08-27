@@ -1,5 +1,7 @@
 import React,{Component} from 'react'
-import { ActivityIndicator, WingBlank, ListView} from 'antd-mobile';
+import ReactDOM from 'react-dom'
+import { ActivityIndicator, WingBlank, ListView,SearchBar,PullToRefresh} from 'antd-mobile';
+import {NavLink,HashRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import './style.less'
@@ -13,31 +15,71 @@ class Home extends Component{
             dataSource,
             refreshing: true,
             isLoading: true,
+            page:1,
             height: document.documentElement.clientHeight,
-            useBodyScroll: true,
+            useBodyScroll: false,
         };
         this.changeState = this.changeState.bind(this)
     }
     changeState(list){
-        console.log(list)
-        //const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
+        const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
         this.setState({
-            //height:hei,
+            height:hei,
             dataSource: this.state.dataSource.cloneWithRows(list)
         })
     }
       componentDidMount() {
         this.props.getHomeList()
     }
-
     componentWillReceiveProps(nextProps, nextContext) {
-        this.changeState(nextProps.list.results)
+        this.changeState(nextProps.list)
+        this.setState({
+            refreshing: false,
+            isLoading: false,
+            height:document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).offsetTop,
+            page:(nextProps.page.next?++this.state.page:'')
+        });
+
+    }
+
+    /**
+     * TODO 获取评论数
+     * @param item
+     * @returns {*}
+     */
+    getCommentCount(item){
+        let count = 0;
+        item.article_comment_set.map(el=>{
+             count+=el.articlecommentreply_set.length
+        })
+        return count+=item.article_comment_set.length
+    }
+    submit(){
+        console.log('search')
+    }
+   /**
+    *TODO 下拉刷新
+    */
+    onRefresh=()=>{
+        this.setState({ refreshing: true, isLoading: true,page:1 });
+        this.props.getHomeList()
+    }
+    /**
+     * TODO 滚动加载数据
+     */
+    onEndReached = ()=>{
+        if(this.state.page){
+            this.setState({ refreshing: true, isLoading: true, });
+            this.props.getHomePage(this.state.page);
+        }
+
     }
     render() {
+
         const {isShow} = this.props
         const row =  (rowData, sectionID, rowID) => {
-
             return(
+                <HashRouter>
                 <div className='list'>
                     <div>
                         <div className='list-header'>
@@ -57,37 +99,45 @@ class Home extends Component{
                         <div className='list-footer'>
                             <div className='list-footer-left'>
                                 <span className='click'>{rowData.click_nums}</span>
-                                <span className='comment'>{rowData.article_comment_set.length}{rowData.article_comment_set?rowData.article_comment_set.map(item=>{
-                                        console.log(item)
-                                    let count = item.length
-                                     return item.articlecommentreply_set.map(res=>{
-                                        return count+=res.length
-                                    })
-                                }):'0'}</span>
+                                <span className='comment'>
+                                    {this.getCommentCount(rowData)}
+                                </span>
                             </div>
-                            <div className='list-footer-right'>阅读全文→</div>
+                            <div className='list-footer-right'><NavLink to={{pathname:`/article/detail/${rowData.id}`}}>阅读全文→</NavLink></div>
                         </div>
                     </div>
                 </div>
+                </HashRouter>
             )
         };
 
         // if(list.results){
-
+        {console.log(this.props.page)}
             return(
                 <div>
                     <WingBlank>
                         <ActivityIndicator toast text="正在加载" animating={isShow} />
                     </WingBlank>
+                    <SearchBar placeholder="Search" onSubmit={this.submit} />
                     <ListView
                         ref={el => this.lv = el}
                         dataSource={this.state.dataSource}
                         renderRow={row}
                         useBodyScroll={this.state.useBodyScroll}
-                       /* style={{
+                        style={{
                             height: this.state.height,
-                        }}*/
+                        }}
+
                         onScroll={() => { console.log('scroll'); }}
+                        renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
+                            {this.state.isLoading ? 'Loading...' : '没有更多数据了'}
+                        </div>)}
+                        pullToRefresh={<PullToRefresh
+
+                            refreshing={this.state.refreshing}
+                            onRefresh={this.onRefresh}
+                        />}
+                        onEndReached={this.onEndReached}
                     />
                 </div>
             )
@@ -98,13 +148,17 @@ class Home extends Component{
     }
 }
 const mapState = (state)=>({
-    list:state.home.articleList,
-    isShow:state.home.isShow
+    page:state.home.articleList,
+    isShow:state.home.isShow,
+    list:state.home.list
 
 })
 const mapDispatch = (dispatch) => ({
       getHomeList(){
          dispatch(actionCreators.getHome())
+    },
+    getHomePage(page){
+          dispatch(actionCreators.getHomePage(page))
     }
 })
 export default connect(mapState,mapDispatch)(Home)
