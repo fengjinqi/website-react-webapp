@@ -1,39 +1,52 @@
 import React from 'react'
-import jquery from 'jquery'
-import editormd from 'editor.md/src/editormd'
-export default class ArticleDetail extends React.Component{
+import {NavBar,Icon} from 'antd-mobile'
+import Editor  from 'react-editor-md'
+import {connect} from 'react-redux'
+import {actionCreators} from './store'
+
+class ArticleDetail extends React.Component{
+
     componentDidMount() {
-        console.log(editormd())
-        editormd('test-editormd', {
-            width: '100%',
-            height: 640,
-            syncScrolling: 'single',
-            path: '/static/markdown/lib/',
-            saveHTMLToTextarea: true, // 注意3：这个配置，textarea可以提交
-            emoji: true, // emoji表情，默认关闭
-            /** 上传图片相关配置如下 */
-            imageUpload: true,
-            imageFormats: ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'webp'],
-            imageUploadURL: '/api/article/blog_img_upload/'
-        })
-        let test = this
-        jquery(function () {
-
-        })
+        let id = this.props.match.params.id
+        this.props.init(id)
     }
-    componentWillMount() {
-        console.log(jquery('#app'))
-
+    componentWillReceiveProps(nextProps, nextContext) {
+        document.title = `文章-${nextProps.list.article.list.title}`;
+        document.getElementById('desc').setAttribute('content',nextProps.list.article.list.desc)
+        document.getElementById('keywords').setAttribute('content',nextProps.list.article.list.keywords)
+        window.sessionStorage.setItem('k',nextProps.list.article.list.content)
     }
+    getContent = ()=>{
 
+        return this.props.list.article.list.content
+    }
     render() {
+
+        let {list} = this.props
+        const ReactMarkdown = require('react-markdown')
         return(
             <div>
-                {console.log(this.props)}
+                <NavBar
+                    mode="dark"
+                    icon={<Icon type="left" />}
+                    onLeftClick={() => this.props.history.goBack()}
+                >文章</NavBar>
                 <div id="test-editormd">
-                    <textarea name="" id="" className="form-control" cols="30" rows="10"></textarea></div>
+                    <textarea name="" id="" className="form-control" cols="30" rows="10">{this.getContent()}</textarea></div>
+
             </div>
         )
     }
 
 }
+const mapState=(state)=>({
+    list:state
+})
+
+const mapDispatch = (dispatch)=>({
+    init(id){
+        dispatch(actionCreators.getArticleDetailAxios(id))
+    }
+
+})
+export default connect(mapState,mapDispatch)(ArticleDetail)

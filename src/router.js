@@ -1,4 +1,4 @@
-import {HashRouter,Switch,Route,Redirect,withRouter} from 'react-router-dom'
+import {HashRouter,Switch,Route} from 'react-router-dom'
 import React from 'react'
 import App from './App'
 

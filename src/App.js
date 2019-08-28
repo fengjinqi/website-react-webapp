@@ -1,6 +1,5 @@
 import React from 'react';
-import Home from './pages/home'
-import {HashRouter,Switch,Route,Redirect,withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import './static/css/comm.less';
 
 

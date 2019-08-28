@@ -16,9 +16,10 @@ export const getHomePageAction = (data)=>({
 })
 
 
-
-
-
+/**
+ * 列表
+ * @returns {Function}
+ */
 export const getHome = () => {
 	return (dispatch) => {
 		getHomeList().then(res => {
@@ -27,6 +28,11 @@ export const getHome = () => {
 
 	}
 }
+/**
+ * 分页
+ * @param page
+ * @returns {Function}
+ */
 export const getHomePage = (page) => {
 	return (dispatch) => {
 		getHomeListPage(page).then(res => {
