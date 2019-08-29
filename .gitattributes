@@ -2,4 +2,3 @@
 *.js linguist-language=React
 *.css linguist-language=React
 *.less linguist-language=React
-* linguist-language=React
