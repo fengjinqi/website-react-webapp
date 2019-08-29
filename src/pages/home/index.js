@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
 import { ActivityIndicator, WingBlank, ListView,SearchBar,PullToRefresh} from 'antd-mobile';
 import {NavLink,HashRouter} from 'react-router-dom'
+import {getCommentCount} from '../../utils/utils'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import './style.less'
@@ -47,13 +48,13 @@ class Home extends Component{
      * @param item
      * @returns {*}
      */
-    getCommentCount(item){
+   /* getCommentCount(item){
         let count = 0;
         item.article_comment_set.map(el=>{
              count+=el.articlecommentreply_set.length
         })
         return count+=item.article_comment_set.length
-    }
+    }*/
     submit(){
         console.log('search')
     }
@@ -100,7 +101,7 @@ class Home extends Component{
                             <div className='list-footer-left'>
                                 <span className='click'>{rowData.click_nums}</span>
                                 <span className='comment'>
-                                    {this.getCommentCount(rowData)}
+                                    {getCommentCount(rowData)}
                                 </span>
                             </div>
                             <div className='list-footer-right'><NavLink to={{pathname:`/article/detail/${rowData.id}`}}>阅读全文→</NavLink></div>
@@ -112,7 +113,6 @@ class Home extends Component{
         };
 
         // if(list.results){
-        {console.log(this.props.page)}
             return(
                 <div>
                     <WingBlank>

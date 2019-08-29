@@ -1,4 +1,4 @@
-import {ARTILCE_DETAIL} from './actionTypes'
+import {ARTILCE_DETAIL,ARTILCE_DEL} from './actionTypes'
 const defaultState = {
     list:[]
 }
@@ -9,6 +9,11 @@ export default (state=defaultState,action)=>{
             return {
                 ...state,
                 list:action.data
+            }
+        case ARTILCE_DEL:
+            return {
+                ...state,
+                list:[]
             }
         default:
             return state
