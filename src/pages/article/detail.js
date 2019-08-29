@@ -6,6 +6,8 @@ import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import MDEditor from '@uiw/react-md-editor';
 import Editor from 'react-editor-md';
+import ShareButtons from '../../components/Share'
+import jquery from 'jquery'
 import './style.less'
 import '../../static/css/share.min.css'
 class ArticleDetail extends React.Component{
@@ -29,6 +31,7 @@ class ArticleDetail extends React.Component{
         })
 
     }
+
     getContent = ()=>{
 
         return this.props.list.article.list.content
@@ -72,6 +75,8 @@ class ArticleDetail extends React.Component{
                             }
                         }/>
                         <div className="social-share"></div>
+                        <ShareButtons
+                        />
                     </div>
                    :''}
 
