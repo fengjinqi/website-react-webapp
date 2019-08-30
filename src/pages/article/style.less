@@ -1,3 +1,6 @@
+body{
+  background: #fff;
+}
 .detail-header{
   background: #fff;
   padding: 15px;
@@ -6,17 +9,45 @@
     text-align: center;
   }
   .detaile-header-img{
+    display: flex;
     img{
       width: 30px;
       height: 30px;
       border-radius: 50%;
       display: inline-block;
       vertical-align: middle;
+      margin-right: 10px;
     }
+    .detaile-header-info{
+
+      h4{
+        font-size: 16px;
+      }
+      span{
+        color: #999;
+        margin-top: 5px;
+        font-size: 12px;
+      }
+      .click{
+
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .comment{
+    background: url("../../static/img/comment.png")no-repeat;
+    padding-left: 25px;
+    margin-left:10px;
+    color: #999;
   }
 
 }
 .editormd-preview-container, .editormd-html-preview {
   box-sizing: border-box;
   padding: 15px;
+}
+.social-share{
+  padding:0 15px;
+  background: #fff;
 }
