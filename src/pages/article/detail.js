@@ -1,12 +1,12 @@
 import React from 'react'
 import {NavBar, Icon, WingBlank, ActivityIndicator} from 'antd-mobile'
-import {getCommentCount} from '../../utils/utils'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import Editor from 'react-editor-md';
-import  moment from 'moment'
+
 import Share from '../../components/Share'
 import {dateDiff} from '../../utils/time'
+
 
 import './style.less'
 import '../../static/css/share.min.css'
@@ -14,7 +14,8 @@ class ArticleDetail extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            isShow:true
+            isShow:true,
+            _visite:false
         }
     }
     componentDidMount() {
@@ -40,6 +41,11 @@ console.log(window.returnCitySN['cname'])
     componentWillUnmount() {
         this.props.Unmount()
     }
+    show=()=>{
+        this.setState({
+            _visite:!this.state._visite
+        })
+    }
     render() {
 
         let {list} = this.props.list.article
@@ -53,14 +59,15 @@ console.log(window.returnCitySN['cname'])
                     mode="dark"
                     icon={<Icon type="left" />}
                     onLeftClick={() => this.props.history.goBack()}
+                    rightContent={
+                        <Icon key="1" type="ellipsis"onClick={this.show} />
+                    }
                 >文章</NavBar>
                 {!this.state.isShow?
                     <div className="main">
                         <div className='detail-header'>
                             <div className='detaile-header-img'>
-
-
-                                <img  src={list.authors.user_imag?list.authors.user_imag:list.authors.user_image} alt=""/>
+                                <img src={list.authors.user_imag?list.authors.user_imag:list.authors.user_image} alt=""/>
                                 <div className='detaile-header-info'>
                                     <h4>{list.authors.username}</h4>
                                     <span>{dateDiff(new Date(list.add_time.replace(/-/g, "/")).getTime())}发布</span>
@@ -69,33 +76,43 @@ console.log(window.returnCitySN['cname'])
                                 </div>
                             </div>
                             <h1>{list.title}</h1>
-
                         </div>
                         <Editor.EditorShow config={
                             {
-                                markdown: // testEditor.getMarkdown().replace(/`/g, '\\`')
-                                    this.getContent()
+                                markdown: this.getContent()
                             }
                         }/>
-                        <Share
-                            title={document.title}
-                        url={window.location.href}
-                        image={list.authors.user_imag?list.authors.user_imag:list.authors.user_image}
-                        description={document.getElementById('desc').getAttribute('content')}
-                            origin={window.location.href}
-                        sites={ ['weibo','qq','wechat','tencent','douban','qzone','linkedin','diandian','facebook','twitter','google']}
-                        />
-                    </div>
-                   :''}
-               {/* <MDEditor.Markdown source={this.getContent()} />*/}
+                        <div className='commit'>
+                            评论
+                        </div>
 
-       {/*         <div className="social-share"></div>*/}
-           {/*     <MarkdownEditor
-                    value={this.getContent()}
-                    visble='false'
-                    previewProps='false'
-                    options=''
-                />*/}
+                        <div id='model' onClick={()=>this.setState({_visite:false})} className={
+                            this.state._visite
+                            ?"animated-fade-in" : "animated-fade-out"
+                        }>
+                            <div className='model-main'
+                                 onClick={e => {
+                                e.stopPropagation();
+                            }}>
+                                <Share
+                                    className={
+                                        this.state._visite
+                                            ? "animated-slide-in-up"
+                                            : "animated-slide-out-down"
+                                    }
+                                    title={document.title}
+                                    url={window.location.href}
+                                    image={list.authors.user_imag?list.authors.user_imag:list.authors.user_image}
+                                    description={document.getElementById('desc').getAttribute('content')}
+                                    origin={window.location.href}
+                                    sites={ ['weibo','qq','wechat','douban','qzone']}
+                                />
+                                <p className='close' onClick={()=>this.setState({_visite:false})}>取消</p>
+                            </div>
+                        </div>
+                    </div>
+
+                   :''}
 
             </div>
         )

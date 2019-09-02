@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-
 import QRCode from 'qrcode.react'
 
 const propTypes = {
@@ -29,11 +28,11 @@ class Share extends React.Component {
         let url = this.props.url
         let wechatQrcodeTitle = defaultProps.wechatQrcodeTitle
         let wechatQrcodeHelper = defaultProps.wechatQrcodeHelper
-        let title = encodeURIComponent(this.props.title)
-        let description = encodeURIComponent(this.props.description)
-        let image = encodeURIComponent(this.props.image)
+        let title = (this.props.title)
+        let description = (this.props.description)
+        let image = (this.props.image)
         let site = title
-        let origin = encodeURIComponent(this.props.origin)
+        let origin = (this.props.origin)
 
         let summary = description
         let source = site
@@ -41,9 +40,9 @@ class Share extends React.Component {
             qzone: `http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${url}&title=${title}&desc=${description}&summary=${summary}&site=${site}&pics=${image}`,
             qq: `http://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}&source=${source}&desc=${description}`,
             tencent: `http://share.v.t.qq.com/index.php?c=share&a=index&title=${title}&url=${url}&pic=${image}`,
-            weibo: `https://service.weibo.com/share/share.php?title=${title}&url=${url}&pic=${image}&appkey=`,
+            weibo: `https://service.weibo.com/share/share.php?title=${title}&pic=${image}&url=${url}&appkey=`,
             wechat: `javascript:`,
-            douban: `http://shuo.douban.com/!service/share?href=${url}&name=${title}&text=${description}&image=${image}&starid=0&aid=0&style=11`,
+            douban: `http://shuo.douban.com/!service/share?name=${title}&text=${description}&image=${image}&starid=0&aid=0&style=11&href=${url}`,
             diandian: `http://www.diandian.com/share?lo=${url}&ti=${title}&type=link`,
             linkedin: `http://www.linkedin.com/shareArticle?mini=true&ro=true&title=${title}&url=${url}&summary=${summary}&source=${source}&armin=armin`,
             facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
@@ -63,9 +62,9 @@ class Share extends React.Component {
                         </div>
                     </div>
                     return (
-                        <a key={i} className='social-share-icon icon-wechat' target='_blank'>
+                        <span key={i} className='social-share-icon icon-wechat' target='_blank'>
                             {doc}
-                        </a>
+                        </span>
                     )
                 } else {
                     let className = `icon-${item} social-share-icon`
