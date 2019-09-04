@@ -49,7 +49,34 @@ console.log(window.returnCitySN['cname'])
     render() {
 
         let {list} = this.props.list.article
+        const comm=()=>{
+            return(
+                <div className='commit'>
+                    <p className='commit-p'></p>
+                    <div className="commit-main">
+                        {list.article_comment_set.map((item,index)=>{
+                            return(
+                                <div key={index} className='commit-body'>
+                                    <div className='commit-body-img'>
+                                        <img src={item.user.user_imag?item.user.user_imag:item.user.user_image} alt=""/>
 
+                                    </div>
+                                    <div className='commit-body-text'>
+                                        <h4>{item.user.username}</h4>
+                                        <p>
+                                            {item.comments}
+                                        </p>
+                                        <p>{dateDiff(new Date(item.add_time.replace(/-/g, "/")).getTime())}
+                                            <span className={item.articlecommentreply_set.length>0?'active':''}>{item.articlecommentreply_set.length>0?item.articlecommentreply_set.length:''}回复</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            )
+        }
         return(
             <div>
                 <WingBlank>
@@ -82,10 +109,10 @@ console.log(window.returnCitySN['cname'])
                                 markdown: this.getContent()
                             }
                         }/>
-                        <div className='commit'>
-                            评论
+                        {comm()}
+                        <div className="footer">
+                            <input type="text"placeholder='说点什么吧'/>
                         </div>
-
                         <div id='model' onClick={()=>this.setState({_visite:false})} className={
                             this.state._visite
                             ?"animated-fade-in" : "animated-fade-out"
