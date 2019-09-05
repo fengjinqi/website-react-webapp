@@ -15,7 +15,9 @@ class ArticleDetail extends React.Component{
         super(props)
         this.state = {
             isShow:true,
-            _visite:false
+            _visite:false,
+            model:false,
+            comm:null
         }
     }
     componentDidMount() {
@@ -46,6 +48,13 @@ console.log(window.returnCitySN['cname'])
             _visite:!this.state._visite
         })
     }
+    setModel(e){
+        console.log(e)
+        this.setState({
+            model:true,
+            comm:e
+        })
+    }
     render() {
 
         let {list} = this.props.list.article
@@ -67,7 +76,7 @@ console.log(window.returnCitySN['cname'])
                                             {item.comments}
                                         </p>
                                         <p>{dateDiff(new Date(item.add_time.replace(/-/g, "/")).getTime())}
-                                            <span className={item.articlecommentreply_set.length>0?'active':''}>{item.articlecommentreply_set.length>0?item.articlecommentreply_set.length:''}回复</span>
+                                            <span onClick={()=>this.setModel(item)} className={item.articlecommentreply_set.length>0?'active':''}>{item.articlecommentreply_set.length>0?item.articlecommentreply_set.length:''}回复</span>
                                         </p>
                                     </div>
                                 </div>
@@ -111,8 +120,9 @@ console.log(window.returnCitySN['cname'])
                         }/>
                         {comm()}
                         <div className="footer">
-                            <input type="text"placeholder='说点什么吧'/>
+                            <input type="text" placeholder='说点什么吧'disabled='disabled'/>
                         </div>
+
                         <div id='model' onClick={()=>this.setState({_visite:false})} className={
                             this.state._visite
                             ?"animated-fade-in" : "animated-fade-out"
@@ -137,8 +147,56 @@ console.log(window.returnCitySN['cname'])
                                 <p className='close' onClick={()=>this.setState({_visite:false})}>取消</p>
                             </div>
                         </div>
-                    </div>
+                        {this.state.model?
+                            <div className={  this.state.model
+                                ?" model animated-fade-in" : "animated-fade-out"}>
+                                <NavBar
+                                    icon={<Icon type="down" />}
+                                    onLeftClick={() => this.setState({model:false})}
+                                >回复</NavBar>
 
+                                <div className='commit' style={{marginTop:50}}>
+                                    <div className="commit-main">
+                                        <div className='commit-body'>
+                                            <div className='commit-body-img'>
+                                                        <img src={this.state.comm.user.user_imag?this.state.comm.user.user_imag:this.state.comm.user.user_image} alt=""/>
+
+                                                    </div>
+                                            <div className='commit-body-text'>
+                                                        <h4>{this.state.comm.user.username}</h4>
+                                                        <p>
+                                                            {this.state.comm.comments}
+                                                        </p>
+                                                        <p>{dateDiff(new Date(this.state.comm.add_time.replace(/-/g, "/")).getTime())}
+                                                        </p>
+                                                    </div>
+                                        </div>
+                                        {this.state.comm.articlecommentreply_set.map((item,index)=>{
+                                            console.log(item)
+                                            return(
+                                                <div key={index} className='commit-body'>
+                                                    <div className='commit-body-img'>
+                                                        <img src={item.user.user_imag?item.user.user_imag:item.user.user_image} alt=""/>
+
+                                                    </div>
+                                                    <div className='commit-body-text'>
+                                                        <h4>{item.user.username}</h4>
+                                                        <p>
+                                                            回复 <span className='user'>{item.to_uids.username}</span> {item.comments}
+                                                        </p>
+                                                        <p>{dateDiff(new Date(item.add_time.replace(/-/g, "/")).getTime())}
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                            :null}
+
+                    </div>
                    :''}
 
             </div>

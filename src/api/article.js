@@ -13,3 +13,10 @@ export const getArticleDetail = (id)=>{
         method: 'get'
     })
 }
+
+export const getArticleCommit = (id)=>{
+    return axios.request({
+        url:`api/article_Comment/${id}/`,
+        method:'get'
+    })
+}

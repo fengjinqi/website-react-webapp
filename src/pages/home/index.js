@@ -37,8 +37,8 @@ class Home extends Component{
         this.setState({
             refreshing: false,
             isLoading: false,
-            height:document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).offsetTop,
-            page:(nextProps.page.next?++this.state.page:'')
+            height:document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).offsetTop-50,
+            page:(nextProps.page.next ? ++this.state.page:'')
         });
 
     }
