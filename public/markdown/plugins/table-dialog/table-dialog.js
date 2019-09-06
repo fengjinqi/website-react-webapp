@@ -80,10 +80,10 @@
 			var dialogLang  = lang.dialog.table;
 			
 			var dialogContent = [
-				"<div class=\"editormd-form\" style=\"padding: 13px 0;\">",
+				"<div class=\"editormd-form\" style.less=\"padding: 13px 0;\">",
 				"<label>" + dialogLang.cellsLabel + "</label>",
-				dialogLang.rows + " <input type=\"number\" value=\"3\" class=\"number-input\" style=\"width:40px;\" max=\"100\" min=\"2\" data-rows />&nbsp;&nbsp;",
-				dialogLang.cols + " <input type=\"number\" value=\"2\" class=\"number-input\" style=\"width:40px;\" max=\"100\" min=\"1\" data-cols /><br/>",
+				dialogLang.rows + " <input type=\"number\" value=\"3\" class=\"number-input\" style.less=\"width:40px;\" max=\"100\" min=\"2\" data-rows />&nbsp;&nbsp;",
+				dialogLang.cols + " <input type=\"number\" value=\"2\" class=\"number-input\" style.less=\"width:40px;\" max=\"100\" min=\"1\" data-cols /><br/>",
 				"<label>" + dialogLang.alignLabel + "</label>",
 				"<div class=\"fa-btns\"></div>",
 				"</div>"

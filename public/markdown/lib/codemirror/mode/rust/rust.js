@@ -14,14 +14,14 @@
 CodeMirror.defineMode("rust", function() {
   var indentUnit = 4, altIndentUnit = 2;
   var valKeywords = {
-    "if": "if-style", "while": "if-style", "loop": "else-style", "else": "else-style",
-    "do": "else-style", "ret": "else-style", "fail": "else-style",
+    "if": "if-style.less", "while": "if-style.less", "loop": "else-style.less", "else": "else-style.less",
+    "do": "else-style.less", "ret": "else-style.less", "fail": "else-style.less",
     "break": "atom", "cont": "atom", "const": "let", "resource": "fn",
     "let": "let", "fn": "fn", "for": "for", "alt": "alt", "iface": "iface",
     "impl": "impl", "type": "type", "enum": "enum", "mod": "mod",
     "as": "op", "true": "atom", "false": "atom", "assert": "op", "check": "op",
-    "claim": "op", "native": "ignore", "unsafe": "ignore", "import": "else-style",
-    "export": "else-style", "copy": "op", "log": "op", "log_err": "op",
+    "claim": "op", "native": "ignore", "unsafe": "ignore", "import": "else-style.less",
+    "export": "else-style.less", "copy": "op", "log": "op", "log_err": "op",
     "use": "op", "bind": "op", "self": "atom", "struct": "enum"
   };
   var typeKeywords = function() {
@@ -207,8 +207,8 @@ CodeMirror.defineMode("rust", function() {
     if (type == "{") return cont(pushlex("}"), exprbrace, poplex);
     if (type.match(/[\[\(]/)) return matchBrackets(type, expression);
     if (type.match(/[\]\)\};,]/)) return pass();
-    if (type == "if-style") return cont(expression, expression);
-    if (type == "else-style" || type == "op") return cont(expression);
+    if (type == "if-style.less") return cont(expression, expression);
+    if (type == "else-style.less" || type == "op") return cont(expression);
     if (type == "for") return cont(pattern, maybetype, inop, expression, expression);
     if (type == "alt") return cont(expression, altbody);
     if (type == "fn") return cont(fndef);

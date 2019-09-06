@@ -230,7 +230,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     return false;
   }
 
-  // C#-style strings where "" escapes a quote.
+  // C#-style.less strings where "" escapes a quote.
   function tokenAtString(stream, state) {
     var next;
     while ((next = stream.next()) != null) {

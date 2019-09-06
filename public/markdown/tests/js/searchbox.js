@@ -344,7 +344,7 @@
         };
         
         function addStyle() {
-            var style   = document.createElement('style'),
+            var style   = document.createElement('style.less'),
                 css     = [
                     '.ace_search {',
                         'background-color: #ddd;',

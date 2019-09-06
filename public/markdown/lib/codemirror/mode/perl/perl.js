@@ -276,7 +276,7 @@ CodeMirror.defineMode("perl",function(){
                 connect                         :1,     // - connect to a remote socket
                 'continue'                      :[1,1], // - optional trailing block in a while or foreach
                 'cos'                           :1,     // - cosine function
-                crypt                           :1,     // - one-way passwd-style encryption
+                crypt                           :1,     // - one-way passwd-style.less encryption
                 dbmclose                        :1,     // - breaks binding on a tied dbm file
                 dbmopen                         :1,     // - create binding on a tied dbm file
                 'default'                       :1,     //

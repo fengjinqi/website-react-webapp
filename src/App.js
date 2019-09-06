@@ -24,19 +24,35 @@ const footer ={
     alignItems: 'center',
     background:'#fff'
 }
+const meun=(props)=>{
+    console.log(props)
+    if(props.location.pathname==='/'||props.location.pathname==='/person'){
+        return (
+            <div className="App">
+                {/*            <Home/>*/}
+                {props.children}
+                <div style={footer}>
+                    <NavLink to='/' exact  activeStyle={{ fontWeight: "bold",  color: "red" }}>文章</NavLink>
+                    <NavLink to='/person' exact   activeStyle={{ fontWeight: "bold",  color: "red" }}>我的</NavLink>
+                </div>
+            </div>
+        );
+    }
+    else{
+        return (
+            <div className="App">
+                {/*            <Home/>*/}
+                {props.children}
+            </div>
+        );
+    }
+}
 class App extends React.Component {
 
     render() {
-        return (
-            <div className="App">
-    {/*            <Home/>*/}
-                {this.props.children}
-               {/* <div style={footer}>
-                    <NavLink to='/'>文章</NavLink>
-                    <NavLink to='person'>我的</NavLink>
-                </div>*/}
-            </div>
-        );
+        return(
+            <div>{meun(this.props)}</div>
+        )
     }
 }
 

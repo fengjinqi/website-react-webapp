@@ -287,7 +287,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
   states.restricted_atBlock_before = function(type, stream, state) {
     if (type == "{")
       return pushContext(state, stream, "restricted_atBlock");
-    if (type == "word" && state.stateArg == "@counter-style") {
+    if (type == "word" && state.stateArg == "@counter-style.less") {
       override = "variable";
       return "restricted_atBlock_before";
     }
@@ -301,7 +301,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     }
     if (type == "word") {
       if ((state.stateArg == "@font-face" && !fontProperties.hasOwnProperty(stream.current().toLowerCase())) ||
-          (state.stateArg == "@counter-style" && !counterDescriptors.hasOwnProperty(stream.current().toLowerCase())))
+          (state.stateArg == "@counter-style.less" && !counterDescriptors.hasOwnProperty(stream.current().toLowerCase())))
         override = "error";
       else
         override = "property";
@@ -412,19 +412,19 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     "bleed", "bookmark-label", "bookmark-level", "bookmark-state",
     "bookmark-target", "border", "border-bottom", "border-bottom-color",
     "border-bottom-left-radius", "border-bottom-right-radius",
-    "border-bottom-style", "border-bottom-width", "border-collapse",
+    "border-bottom-style.less", "border-bottom-width", "border-collapse",
     "border-color", "border-image", "border-image-outset",
     "border-image-repeat", "border-image-slice", "border-image-source",
     "border-image-width", "border-left", "border-left-color",
-    "border-left-style", "border-left-width", "border-radius", "border-right",
-    "border-right-color", "border-right-style", "border-right-width",
-    "border-spacing", "border-style", "border-top", "border-top-color",
-    "border-top-left-radius", "border-top-right-radius", "border-top-style",
+    "border-left-style.less", "border-left-width", "border-radius", "border-right",
+    "border-right-color", "border-right-style.less", "border-right-width",
+    "border-spacing", "border-style.less", "border-top", "border-top-color",
+    "border-top-left-radius", "border-top-right-radius", "border-top-style.less",
     "border-top-width", "border-width", "bottom", "box-decoration-break",
     "box-shadow", "box-sizing", "break-after", "break-before", "break-inside",
     "caption-side", "clear", "clip", "color", "color-profile", "column-count",
     "column-fill", "column-gap", "column-rule", "column-rule-color",
-    "column-rule-style", "column-rule-width", "column-span", "column-width",
+    "column-rule-style.less", "column-rule-width", "column-span", "column-width",
     "columns", "content", "counter-increment", "counter-reset", "crop", "cue",
     "cue-after", "cue-before", "cursor", "direction", "display",
     "dominant-baseline", "drop-initial-after-adjust",
@@ -445,16 +445,16 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     "icon", "image-orientation", "image-rendering", "image-resolution",
     "inline-box-align", "justify-content", "left", "letter-spacing",
     "line-break", "line-height", "line-stacking", "line-stacking-ruby",
-    "line-stacking-shift", "line-stacking-strategy", "list-style",
-    "list-style-image", "list-style-position", "list-style-type", "margin",
+    "line-stacking-shift", "line-stacking-strategy", "list-style.less",
+    "list-style.less-image", "list-style.less-position", "list-style.less-type", "margin",
     "margin-bottom", "margin-left", "margin-right", "margin-top",
     "marker-offset", "marks", "marquee-direction", "marquee-loop",
-    "marquee-play-count", "marquee-speed", "marquee-style", "max-height",
+    "marquee-play-count", "marquee-speed", "marquee-style.less", "max-height",
     "max-width", "min-height", "min-width", "move-to", "nav-down", "nav-index",
     "nav-left", "nav-right", "nav-up", "object-fit", "object-position",
     "opacity", "order", "orphans", "outline",
-    "outline-color", "outline-offset", "outline-style", "outline-width",
-    "overflow", "overflow-style", "overflow-wrap", "overflow-x", "overflow-y",
+    "outline-color", "outline-offset", "outline-style.less", "outline-width",
+    "overflow", "overflow-style.less", "overflow-wrap", "overflow-x", "overflow-y",
     "padding", "padding-bottom", "padding-left", "padding-right", "padding-top",
     "page", "page-break-after", "page-break-before", "page-break-inside",
     "page-policy", "pause", "pause-after", "pause-before", "perspective",
@@ -469,11 +469,11 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     "tab-size", "table-layout", "target", "target-name", "target-new",
     "target-position", "text-align", "text-align-last", "text-decoration",
     "text-decoration-color", "text-decoration-line", "text-decoration-skip",
-    "text-decoration-style", "text-emphasis", "text-emphasis-color",
-    "text-emphasis-position", "text-emphasis-style", "text-height",
+    "text-decoration-style.less", "text-emphasis", "text-emphasis-color",
+    "text-emphasis-position", "text-emphasis-style.less", "text-height",
     "text-indent", "text-justify", "text-outline", "text-overflow", "text-shadow",
     "text-size-adjust", "text-space-collapse", "text-transform", "text-underline-position",
-    "text-wrap", "top", "transform", "transform-origin", "transform-style",
+    "text-wrap", "top", "transform", "transform-origin", "transform-style.less",
     "transition", "transition-delay", "transition-duration",
     "transition-property", "transition-timing-function", "unicode-bidi",
     "vertical-align", "visibility", "voice-balance", "voice-duration",

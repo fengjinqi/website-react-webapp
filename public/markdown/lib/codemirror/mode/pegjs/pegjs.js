@@ -56,7 +56,7 @@ CodeMirror.defineMode("pegjs", function (config) {
             stream.match(/^.[^\\\"\']*/);
           }
         }
-        return state.lhs ? "property string" : "string"; // Token style
+        return state.lhs ? "property string" : "string"; // Token style.less
       } else if (state.inComment) {
         while (state.inComment && !stream.eol()) {
           if (stream.match(/\*\//)) {

@@ -90,7 +90,7 @@
 			var dialogLang  = lang.dialog.emoji;
 			
 			var dialogContent = [
-				"<div class=\"" + classPrefix + "emoji-dialog-box\" style=\"width: 760px;height: 334px;margin-bottom: 8px;overflow: hidden;\">",
+				"<div class=\"" + classPrefix + "emoji-dialog-box\" style.less=\"width: 760px;height: 334px;margin-bottom: 8px;overflow: hidden;\">",
 				"<div class=\"" + classPrefix + "tab\"></div>",
 				"</div>",
 			].join("\n");
@@ -160,7 +160,7 @@
 				for (var x = 0; x < 4; x++) 
                 {
 					var display = (x === 0) ? "" : "display:none;";
-					container += "<div class=\"" + classPrefix + "tab-box\" style=\"height: 260px;overflow: hidden;overflow-y: auto;" + display + "\"></div>";
+					container += "<div class=\"" + classPrefix + "tab-box\" style.less=\"height: 260px;overflow: hidden;overflow-y: auto;" + display + "\"></div>";
 				}
 
 				container += "</div>";
@@ -222,7 +222,7 @@
                                 else if (type === "editormd-logo")
                                 {
                                     icon = "<i class=\"" + emoji + "\" title=\"Editor.md logo (" + emoji + ")\"></i>";
-                                    row += "<a href=\"javascript:;\" value=\":" + emoji + ":\" title=\":" + emoji + ":\" style=\"width:20%;\" class=\"" + classPrefix + "emoji-btn\">" + icon + "</a>";
+                                    row += "<a href=\"javascript:;\" value=\":" + emoji + ":\" title=\":" + emoji + ":\" style.less=\"width:20%;\" class=\"" + classPrefix + "emoji-btn\">" + icon + "</a>";
                                 }
                             }
                             else
@@ -245,7 +245,7 @@
                 {
                     for (var i = 0, len = $data.length; i < len; i++)
                     {
-                        var h4Style = (i === 0) ? " style=\"margin: 0 0 10px;\"" : " style=\"margin: 10px 0;\"";
+                        var h4Style = (i === 0) ? " style.less=\"margin: 0 0 10px;\"" : " style.less=\"margin: 10px 0;\"";
                         $tab.append("<h4" + h4Style + ">" + $data[i].category + "</h4>");
                         $tab.append(pagination($data[i].list, cname));
                     }

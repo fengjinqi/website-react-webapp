@@ -92,7 +92,7 @@
   100% { background: #7e7; }
 }
 
-/* Can style cursor different in overwrite (non-insert) mode */
+/* Can style.less cursor different in overwrite (non-insert) mode */
 div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 .cm-tab { display: inline-block; text-decoration: inherit; }
@@ -327,5 +327,5 @@ div.CodeMirror-cursors {
 /* See issue #2901 */
 .cm-tab-wrap-hack:after { content: ''; }
 
-/* Help users use markselection to safely style text background */
+/* Help users use markselection to safely style.less text background */
 span.CodeMirror-selectedtext { background: none; }

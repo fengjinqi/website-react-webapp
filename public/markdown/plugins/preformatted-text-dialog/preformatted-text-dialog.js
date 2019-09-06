@@ -41,7 +41,7 @@
             }
             else 
             {      
-                var dialogContent = "<textarea placeholder=\"coding now....\" style=\"display:none;\">" + selection + "</textarea>";
+                var dialogContent = "<textarea placeholder=\"coding now....\" style.less=\"display:none;\">" + selection + "</textarea>";
 
                 dialog = this.createDialog({
                     name   : dialogName,

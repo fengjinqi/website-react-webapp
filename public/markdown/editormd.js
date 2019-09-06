@@ -183,8 +183,8 @@
             }
         },
         toolbarCustomIcons   : {               // using html tag create toolbar icon, unused default <a> tag.
-            lowercase        : "<a href=\"javascript:;\" title=\"Lowercase\" unselectable=\"on\"><i class=\"fa\" name=\"lowercase\" style=\"font-size:24px;margin-top: -10px;\">a</i></a>",
-            "ucwords"        : "<a href=\"javascript:;\" title=\"ucwords\" unselectable=\"on\"><i class=\"fa\" name=\"ucwords\" style=\"font-size:20px;margin-top: -3px;\">Aa</i></a>"
+            lowercase        : "<a href=\"javascript:;\" title=\"Lowercase\" unselectable=\"on\"><i class=\"fa\" name=\"lowercase\" style.less=\"font-size:24px;margin-top: -10px;\">a</i></a>",
+            "ucwords"        : "<a href=\"javascript:;\" title=\"ucwords\" unselectable=\"on\"><i class=\"fa\" name=\"ucwords\" style.less=\"font-size:20px;margin-top: -3px;\">Aa</i></a>"
         }, 
         toolbarIconsClass    : {
             undo             : "fa-undo",
@@ -418,7 +418,7 @@
                 (!settings.readOnly) ? "<a href=\"javascript:;\" class=\"fa fa-close " + classPrefix + "preview-close-btn\"></a>" : "",
                 ( (settings.saveHTMLToTextarea) ? "<textarea class=\"" + classNames.textarea.html + "\" name=\"" + id + "-html-code\"></textarea>" : "" ),
                 "<div class=\"" + classPrefix + "preview\"><div class=\"markdown-body " + classPrefix + "preview-container\"></div></div>",
-                "<div class=\"" + classPrefix + "container-mask\" style=\"display:block;\"></div>",
+                "<div class=\"" + classPrefix + "container-mask\" style.less=\"display:block;\"></div>",
                 "<div class=\"" + classPrefix + "mask\"></div>"
             ].join("\n");
             
@@ -1310,12 +1310,12 @@
             var classPrefix  = this.classPrefix;  
             
             var infoDialogHTML = [
-                "<div class=\"" + classPrefix + "dialog " + classPrefix + "dialog-info\" style=\"\">",
+                "<div class=\"" + classPrefix + "dialog " + classPrefix + "dialog-info\" style.less=\"\">",
                 "<div class=\"" + classPrefix + "dialog-container\">",
                 "<h1><i class=\"editormd-logo editormd-logo-lg editormd-logo-color\"></i> " + editormd.title + "<small>v" + editormd.version + "</small></h1>",
                 "<p>" + this.lang.description + "</p>",
-                "<p style=\"margin: 10px 0 20px 0;\"><a href=\"" + editormd.homePage + "\" target=\"_blank\">" + editormd.homePage + " <i class=\"fa fa-external-link\"></i></a></p>",
-                "<p style=\"font-size: 0.85em;\">Copyright &copy; 2015 <a href=\"https://github.com/pandao\" target=\"_blank\" class=\"hover-link\">Pandao</a>, The <a href=\"https://github.com/pandao/editor.md/blob/master/LICENSE\" target=\"_blank\" class=\"hover-link\">MIT</a> License.</p>",
+                "<p style.less=\"margin: 10px 0 20px 0;\"><a href=\"" + editormd.homePage + "\" target=\"_blank\">" + editormd.homePage + " <i class=\"fa fa-external-link\"></i></a></p>",
+                "<p style.less=\"font-size: 0.85em;\">Copyright &copy; 2015 <a href=\"https://github.com/pandao\" target=\"_blank\" class=\"hover-link\">Pandao</a>, The <a href=\"https://github.com/pandao/editor.md/blob/master/LICENSE\" target=\"_blank\" class=\"hover-link\">MIT</a> License.</p>",
                 "</div>",
                 "<a href=\"javascript:;\" class=\"fa fa-close " + classPrefix + "dialog-close\"></a>",
                 "</div>"
@@ -3589,7 +3589,7 @@
         markedRenderer.pageBreak = function(text) {
             if (pageBreakReg.test(text) && settings.pageBreak)
             {
-                text = "<hr style=\"page-break-after:always;\" class=\"page-break editormd-page-break\" />";
+                text = "<hr style.less=\"page-break-after:always;\" class=\"page-break editormd-page-break\" />";
             }
             
             return text;
@@ -3642,7 +3642,7 @@
 
         markedRenderer.tablecell = function(content, flags) {
             var type = (flags.header) ? "th" : "td";
-            var tag  = (flags.align)  ? "<" + type +" style=\"text-align:" + flags.align + "\">" : "<" + type + ">";
+            var tag  = (flags.align)  ? "<" + type +" style.less=\"text-align:" + flags.align + "\">" : "<" + type + ">";
             
             return tag + this.atLink(this.emoji(content)) + "</" + type + ">\n";
         };
@@ -3653,7 +3653,7 @@
                 text = text.replace(/^\s*\[\s\]\s*/, "<input type=\"checkbox\" class=\"task-list-item-checkbox\" /> ")
                            .replace(/^\s*\[x\]\s*/,  "<input type=\"checkbox\" class=\"task-list-item-checkbox\" checked disabled /> ");
 
-                return "<li style=\"list-style: none;\">" + this.atLink(this.emoji(text)) + "</li>";
+                return "<li style.less=\"list-style.less: none;\">" + this.atLink(this.emoji(text)) + "</li>";
             }
             else 
             {
@@ -4250,7 +4250,7 @@
 
         if (options.title !== "")
         {
-            html += "<div class=\"" + classPrefix + "dialog-header\"" + ( (options.drag) ? " style=\"cursor: move;\"" : "" ) + ">";
+            html += "<div class=\"" + classPrefix + "dialog-header\"" + ( (options.drag) ? " style.less=\"cursor: move;\"" : "" ) + ">";
             html += "<strong class=\"" + classPrefix + "dialog-title\">" + options.title + "</strong>";
             html += "</div>";
         }

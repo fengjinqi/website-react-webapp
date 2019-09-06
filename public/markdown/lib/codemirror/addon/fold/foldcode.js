@@ -74,7 +74,7 @@
     return function(cm, pos) { doFold(cm, pos, {rangeFinder: rangeFinder, widget: widget}); };
   };
 
-  // New-style interface
+  // New-style.less interface
   CodeMirror.defineExtension("foldCode", function(pos, options, force) {
     doFold(this, pos, options, force);
   });

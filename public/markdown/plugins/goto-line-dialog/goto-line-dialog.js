@@ -76,8 +76,8 @@
 			if (editor.find("." + dialogName).length < 1) 
 			{			
 				var dialogContent = [
-					"<div class=\"editormd-form\" style=\"padding: 10px 0;\">",
-					"<p style=\"margin: 0;\">" + dialogLang.label + " 1-" + lineCount +"&nbsp;&nbsp;&nbsp;<input type=\"number\" class=\"number-input\" style=\"width: 60px;\" value=\"1\" max=\"" + lineCount + "\" min=\"1\" data-line-number /></p>",
+					"<div class=\"editormd-form\" style.less=\"padding: 10px 0;\">",
+					"<p style.less=\"margin: 0;\">" + dialogLang.label + " 1-" + lineCount +"&nbsp;&nbsp;&nbsp;<input type=\"number\" class=\"number-input\" style.less=\"width: 60px;\" value=\"1\" max=\"" + lineCount + "\" min=\"1\" data-line-number /></p>",
 					"</div>"
 				].join("\n");
 

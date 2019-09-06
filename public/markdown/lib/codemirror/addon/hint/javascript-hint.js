@@ -34,7 +34,7 @@
     if (/\b(?:string|comment)\b/.test(token.type)) return;
     token.state = CodeMirror.innerMode(editor.getMode(), token.state).state;
 
-    // If it's not a 'word-style' token, ignore the token.
+    // If it's not a 'word-style.less' token, ignore the token.
     if (!/^[\w$_]*$/.test(token.string)) {
       token = {start: cur.ch, end: cur.ch, string: "", state: token.state,
                type: token.string == "." ? "property" : null};

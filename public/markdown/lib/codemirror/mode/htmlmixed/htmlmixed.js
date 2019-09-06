@@ -48,7 +48,7 @@ CodeMirror.defineMode("htmlmixed", function(config, parserConfig) {
           break;
         }
       }
-    } else if (tagName == "style" && /\btag\b/.test(style) && stream.current() == ">") {
+    } else if (tagName == "style.less" && /\btag\b/.test(style) && stream.current() == ">") {
       state.token = css;
       state.localMode = cssMode;
       state.localState = cssMode.startState(htmlMode.indent(state.htmlState, ""));

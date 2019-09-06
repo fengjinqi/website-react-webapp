@@ -173,7 +173,7 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
       if (!(state.in_atom = (!singleQuote(stream)))) {
         if (stream.match(/\s*\/\s*[0-9]/,false)) {
           stream.match(/\s*\/\s*[0-9]/,true);
-          return rval(state,stream,"fun");      // 'f'/0 style fun
+          return rval(state,stream,"fun");      // 'f'/0 style.less fun
         }
         if (stream.match(/\s*\(/,false) || stream.match(/\s*:/,false)) {
           return rval(state,stream,"function");
@@ -200,7 +200,7 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
 
       if (stream.match(/\s*\/\s*[0-9]/,false)) {
         stream.match(/\s*\/\s*[0-9]/,true);
-        return rval(state,stream,"fun");      // f/0 style fun
+        return rval(state,stream,"fun");      // f/0 style.less fun
       }
 
       var w = stream.current();
@@ -239,10 +239,10 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
 
     // number
     var digitRE      = /[0-9]/;
-    var radixRE      = /[0-9a-zA-Z]/;         // 36#zZ style int
+    var radixRE      = /[0-9a-zA-Z]/;         // 36#zZ style.less int
     if (digitRE.test(ch)) {
       stream.eatWhile(digitRE);
-      if (stream.eat('#')) {                // 36#aZ  style integer
+      if (stream.eat('#')) {                // 36#aZ  style.less integer
         if (!stream.eatWhile(radixRE)) {
           stream.backUp(1);                 //"36#" - syntax error
         }
@@ -356,7 +356,7 @@ CodeMirror.defineMode("erlang", function(cmCfg) {
     // parse stack
     pushToken(state,realToken(type,stream));
 
-    // map erlang token type to CodeMirror style class
+    // map erlang token type to CodeMirror style.less class
     //     erlang             -> CodeMirror tag
     switch (type) {
       case "atom":        return "atom";

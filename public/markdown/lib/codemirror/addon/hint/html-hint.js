@@ -124,7 +124,7 @@
     h1: s, h2: s, h3: s, h4: s, h5: s, h6: s,
     head: {
       attrs: {},
-      children: ["title", "base", "link", "style", "meta", "script", "noscript", "command"]
+      children: ["title", "base", "link", "style.less", "meta", "script", "noscript", "command"]
     },
     header: s,
     hgroup: s,
@@ -199,7 +199,7 @@
         content: null,
         charset: charsets,
         name: ["viewport", "application-name", "author", "description", "generator", "keywords"],
-        "http-equiv": ["content-language", "content-type", "default-style", "refresh"]
+        "http-equiv": ["content-language", "content-type", "default-style.less", "refresh"]
       }
     },
     meter: { attrs: { value: null, min: null, low: null, high: null, max: null, optimum: null } },

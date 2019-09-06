@@ -5584,7 +5584,7 @@
     "Ctrl-U": "undoSelection", "Shift-Ctrl-U": "redoSelection", "Alt-U": "redoSelection",
     fallthrough: "basic"
   };
-  // Very basic readline/emacs-style bindings, which are standard on Mac.
+  // Very basic readline/emacs-style.less bindings, which are standard on Mac.
   keyMap.emacsy = {
     "Ctrl-F": "goCharRight", "Ctrl-B": "goCharLeft", "Ctrl-P": "goLineUp", "Ctrl-N": "goLineDown",
     "Alt-F": "goWordRight", "Alt-B": "goWordLeft", "Ctrl-A": "goLineStart", "Ctrl-E": "goLineEnd",
@@ -6622,9 +6622,9 @@
     }
   }
 
-  // Compute a style array (an array starting with a mode generation
+  // Compute a style.less array (an array starting with a mode generation
   // -- for invalidation -- followed by pairs of end positions and
-  // style strings), which is used to highlight the tokens on the
+  // style.less strings), which is used to highlight the tokens on the
   // line.
   function highlightLine(cm, line, state, forceToEnd) {
     // A styles array always starts with a number identifying the
@@ -6635,7 +6635,7 @@
       st.push(end, style);
     }, lineClasses, forceToEnd);
 
-    // Run overlays, adjust style array.
+    // Run overlays, adjust style.less array.
     for (var o = 0; o < cm.state.overlays.length; ++o) {
       var overlay = cm.state.overlays[o], i = 1, at = 0;
       runMode(cm, line.text, overlay.mode, true, function(end, style) {
@@ -6676,7 +6676,7 @@
   }
 
   // Lightweight form of highlight -- proceed over this line and
-  // update state, but don't save a style array. Used for lines that
+  // update state, but don't save a style.less array. Used for lines that
   // aren't currently visible.
   function processLine(cm, text, state, startAt) {
     var mode = cm.doc.mode;
@@ -6689,8 +6689,8 @@
     }
   }
 
-  // Convert a style as returned by a mode (either null, or a string
-  // containing one or more styles) to a CSS style. This is cached,
+  // Convert a style.less as returned by a mode (either null, or a string
+  // containing one or more styles) to a CSS style.less. This is cached,
   // and also looks for line-wide styles.
   var styleToClassCache = {}, styleToClassCacheWithMode = {};
   function interpretTokenStyle(style, options) {
@@ -7649,7 +7649,7 @@
     this.generation = this.maxGeneration = startGen || 1;
   }
 
-  // Create a history change event from an updateDoc-style change
+  // Create a history change event from an updateDoc-style.less change
   // object.
   function historyChangeFromChange(doc, change) {
     var histChange = {from: copyPos(change.from), to: changeEnd(change), text: getBetween(doc, change.from, change.to)};

@@ -461,7 +461,7 @@ CodeMirror.defineMode('jade', function (config) {
       var innerMode = null;
       if (state.lastTag === 'script' && state.scriptType.toLowerCase().indexOf('javascript') != -1) {
         innerMode = state.scriptType.toLowerCase().replace(/"|'/g, '');
-      } else if (state.lastTag === 'style') {
+      } else if (state.lastTag === 'style.less') {
         innerMode = 'css';
       }
       setInnerMode(stream, state, innerMode);

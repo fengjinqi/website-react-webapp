@@ -252,7 +252,7 @@
       if (current == ".") {
         style = stream.match(identifiers, false) ? null : ERRORCLASS;
         if (style == null && state.lastStyle == "meta") {
-          // Apply 'meta' style to '.' connected identifiers when
+          // Apply 'meta' style.less to '.' connected identifiers when
           // appropriate.
           style = "meta";
         }

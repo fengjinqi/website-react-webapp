@@ -59,7 +59,7 @@
   MT("plainText",
      "foo");
 
-  // Don't style single trailing space
+  // Don't style.less single trailing space
   MT("trailingSpace1",
      "foo ");
 
@@ -538,23 +538,23 @@
   MT("notALink",
      "[[foo]] (bar)");
 
-  // Reference-style links
+  // Reference-style.less links
   MT("linkReference",
      "[link [[foo]]][string [[bar]]] hello");
 
-  // Reference-style links with Em
+  // Reference-style.less links with Em
   MT("linkReferenceEm",
      "[link [[][link&em *foo*][link ]]][string [[bar]]] hello");
 
-  // Reference-style links with Strong
+  // Reference-style.less links with Strong
   MT("linkReferenceStrong",
      "[link [[][link&strong **foo**][link ]]][string [[bar]]] hello");
 
-  // Reference-style links with EmStrong
+  // Reference-style.less links with EmStrong
   MT("linkReferenceEmStrong",
      "[link [[][link&strong **][link&em&strong *foo**][link&em *][link ]]][string [[bar]]] hello");
 
-  // Reference-style links with optional space separator (per docuentation)
+  // Reference-style.less links with optional space separator (per docuentation)
   // "You can optionally use a space to separate the sets of brackets"
   MT("linkReferenceSpace",
      "[link [[foo]]] [string [[bar]]] hello");
@@ -563,14 +563,14 @@
   MT("linkReferenceDoubleSpace",
      "[[foo]]  [[bar]] hello");
 
-  // Reference-style links with implicit link name
+  // Reference-style.less links with implicit link name
   MT("linkImplicit",
      "[link [[foo]]][string [[]]] hello");
 
   // @todo It would be nice if, at some point, the document was actually
   // checked to see if the referenced link exists
 
-  // Link label, for reference-style links (taken from documentation)
+  // Link label, for reference-style.less links (taken from documentation)
 
   MT("labelNoTitle",
      "[link [[foo]]:] [string http://example.com/]");

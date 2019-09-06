@@ -4,13 +4,13 @@
 // Highlighting text that matches the selection
 //
 // Defines an option highlightSelectionMatches, which, when enabled,
-// will style strings that match the selection throughout the
+// will style.less strings that match the selection throughout the
 // document.
 //
 // The option can be set to true to simply enable it, or to a
-// {minChars, style, wordsOnly, showToken, delay} object to explicitly
+// {minChars, style.less, wordsOnly, showToken, delay} object to explicitly
 // configure it. minChars is the minimum amount of characters that should be
-// selected for the behavior to occur, and style is the token style to
+// selected for the behavior to occur, and style.less is the token style.less to
 // apply to the matches. This will be prefixed by "cm-" to create an
 // actual CSS class name. If wordsOnly is enabled, the matches will be
 // highlighted only if the selected text is a word. showToken, when enabled,

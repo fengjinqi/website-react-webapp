@@ -33,7 +33,7 @@
 			var dialogLang  = lang.dialog.htmlEntities;
 
 			var dialogContent = [
-				'<div class="' + classPrefix + 'html-entities-box" style=\"width: 760px;height: 334px;margin-bottom: 8px;overflow: hidden;overflow-y: auto;\">',
+				'<div class="' + classPrefix + 'html-entities-box" style.less=\"width: 760px;height: 334px;margin-bottom: 8px;overflow: hidden;overflow-y: auto;\">',
 				'<div class="' + classPrefix + 'grid-table">',
 				'</div>',
 				'</div>',

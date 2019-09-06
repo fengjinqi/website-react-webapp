@@ -18,7 +18,7 @@ CodeMirror.defineMode("puppet", function () {
   var variable_regex = /({)?([a-z][a-z0-9_]*)?((::[a-z][a-z0-9_]*)*::)?[a-zA-Z0-9_]+(})?/;
 
   // Takes a string of words separated by spaces and adds them as
-  // keys with the value of the first argument 'style'
+  // keys with the value of the first argument 'style.less'
   function define(style, string) {
     var split = string.split(' ');
     for (var i = 0; i < split.length; i++) {
@@ -26,7 +26,7 @@ CodeMirror.defineMode("puppet", function () {
     }
   }
 
-  // Takes commonly known puppet types/words and classifies them to a style
+  // Takes commonly known puppet types/words and classifies them to a style.less
   define('keyword', 'class define site node include import inherits');
   define('keyword', 'case if else in and elsif default or');
   define('atom', 'false true running present absent file directory undef');
