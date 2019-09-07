@@ -3,32 +3,44 @@ import {Icon, NavBar} from "antd-mobile";
 import '../../static/fonts/font-awesome-4.7.0/css/font-awesome.css'
 import './style.less'
 import {Login as getToken} from '../../api/user'
+import {Toast} from 'antd-mobile'
+import {setToken} from '../../utils/utils'
 class Login extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             username:'',
-            password:''
+            password:'',
+            userrError:'',
+            passError:''
         }
         this.Change = this.Change.bind(this)
     }
     submit(){
 
-        let event = event || window.event
-        event.preventDefault()
-        alert()
-        let data ={
-            username:this.state.username,
-            password:this.state.password
+        var regex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+        if (!regex.test(this.state.username)) this.setState({userError:'请输入正确邮箱'})
+        if (!this.state.password) this.setState({passError:'请输入密码'})
+        if (regex.test(this.state.username)&&this.state.password){
+            let data ={
+                username:this.state.username,
+                password:this.state.password
+            }
+            getToken(data).then(res=>{
+                console.log(res.data)
+                setToken(res.data.token)
+                Toast.success('登录成功',1)
+                console.log(this.props.history.push('/person'))
+            }).catch(err=>{
+                Toast.fail(err.response.data.non_field_errors[0], 1);
+            })
         }
-        getToken(data).then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
-
     }
     Change(e){
+        this.setState({
+            userError:'',
+            passError:''
+        })
         if (e.target.name=='user'){
             this.setState({
                 username:e.target.value
@@ -40,7 +52,6 @@ class Login extends React.Component{
         }
     }
     render() {
-
         return (
             <div>
                 <NavBar
@@ -55,13 +66,15 @@ class Login extends React.Component{
                             <div className="login-form-main">
                                 <span className='fa fa-envelope-o'></span>
                                 <input type="email" name='user' value={this.state.username} onChange={this.Change} placeholder='请输入邮箱'required/>
+                                <span  className='error'>{this.state.userError}</span>
                             </div>
                             <div className="login-form-main">
                                 <span className='fa fa-key'></span>
                                 <input type="password" name='pass' value={this.state.password} onChange={this.Change}  placeholder='请输入密码'required/>
+                                <span className='error'>{this.state.passError}</span>
                             </div>
                             <div className="login-form-main">
-                                <input type="submit" onSubmit={this.submit.bind(this)} value='登录'/>
+                                <input type="button" onClick={this.submit.bind(this)} value='登录'/>
                             </div>
 
                         </form>

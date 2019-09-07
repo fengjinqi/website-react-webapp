@@ -79,7 +79,7 @@ module.exports = function(webpackEnv) {
   // common function to get style.less loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
-      isEnvDevelopment && require.resolve('style.less-loader'),
+      isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
         loader: MiniCssExtractPlugin.loader,
         options: shouldUseRelativeAssetPaths ? { publicPath: '../../' } : {},

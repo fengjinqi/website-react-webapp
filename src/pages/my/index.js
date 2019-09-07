@@ -1,8 +1,13 @@
 import React from 'react'
 import {Icon, NavBar} from 'antd-mobile'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import './style.less'
 class Person extends React.Component{
+    componentDidMount() {
+        this.props.getInfo()
+    }
+
     render() {
         return(
             <div>
@@ -24,4 +29,13 @@ class Person extends React.Component{
     }
 
 }
-export default Person
+
+const mapState=(state)=>({
+
+})
+const mapDispatch=(dispatch)=>({
+    getInfo(){
+
+    }
+})
+export default connect(mapState,mapDispatch)(Person)
