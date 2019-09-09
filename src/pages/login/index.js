@@ -27,10 +27,9 @@ class Login extends React.Component{
                 password:this.state.password
             }
             getToken(data).then(res=>{
-                console.log(res.data)
                 setToken(res.data.token)
-                Toast.success('登录成功',1)
-                console.log(this.props.history.push('/person'))
+                //Toast.success('登录成功',1)
+                this.props.history.push('/person')
             }).catch(err=>{
                 Toast.fail(err.response.data.non_field_errors[0], 1);
             })
@@ -41,11 +40,11 @@ class Login extends React.Component{
             userError:'',
             passError:''
         })
-        if (e.target.name=='user'){
+        if (e.target.name==='user'){
             this.setState({
                 username:e.target.value
             })
-        } else if(e.target.name == 'pass'){
+        } else if(e.target.name === 'pass'){
             this.setState({
                 password:e.target.value
             })

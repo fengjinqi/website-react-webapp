@@ -25,7 +25,6 @@ const footer ={
     background:'#fff'
 }
 const meun=(props)=>{
-    console.log(props)
     if(props.location.pathname==='/'||props.location.pathname==='/person'){
         return (
             <div className="App">
