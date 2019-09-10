@@ -18,7 +18,6 @@ export default (state = defaultState, action) => {
 				isShow: false
 			}
         case actionTypes.HOME_GET_PAGING:
-            console.log(action)
             return {
                 ...state,
                 articleList: action.data,

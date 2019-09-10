@@ -1,6 +1,5 @@
 import React,{Fragment} from 'react'
-import {ActivityIndicator, Icon, NavBar, Toast, WingBlank} from 'antd-mobile'
-import {Link} from 'react-router-dom'
+import {ActivityIndicator, Toast, WingBlank} from 'antd-mobile'
 import {connect} from 'react-redux'
 import './style.less'
 import {getToken,delToken} from '../../utils/utils'
@@ -24,11 +23,6 @@ class Person extends React.Component{
             this.props.history.push('/login')
         }
     }
- /*   shouldComponentUpdate(nextProps, nextState, nextContext) {
-        if (nextProps.info)return true
-
-    }*/
-
     componentWillReceiveProps(nextProps, nextContext) {
         if(nextProps.info) this.setState({
             type:true,
@@ -44,7 +38,6 @@ class Person extends React.Component{
     }
     render() {
         const {info,isShow} = this.props
-        console.log(isShow)
         if (!getToken())return   <LoginMain/>
         if (!this.state.type){
             return (
@@ -63,6 +56,7 @@ class Person extends React.Component{
                             name={info[0].username}
                             image={info[0].user_imag?info[0].user_imag:info[0].user_image?info[0].user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'}
                             itemLogOut={this.logout.bind(this)}
+                            history={this.props.history}
                         />:
                         <LoginMain/>
 

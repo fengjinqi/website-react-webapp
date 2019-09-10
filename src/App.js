@@ -22,7 +22,8 @@ const footer ={
     position:'fixed',
     bottom:'0',
     alignItems: 'center',
-    background:'#fff'
+    background:'#fff',
+    fontSize:'16px'
 }
 const meun=(props)=>{
     if(props.location.pathname==='/'||props.location.pathname==='/person'){

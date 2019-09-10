@@ -1,8 +1,10 @@
-import {MY_GETINFO,MY_ERROR} from './actionTypes'
+import {MY_GETINFO,MY_ERROR,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE} from './actionTypes'
 const defaultState = {
     info:[],
     error:[],
-    isShow:false
+    isShow:false,
+    myArticle:[],
+    myArticlePage:[]
 }
 
 export default (state=defaultState,action)=>{
@@ -17,6 +19,18 @@ export default (state=defaultState,action)=>{
             return {
                 ...state,
                 error:action.error
+            }
+        case MY_ARTICLE_LIST:
+            return {
+                ...state,
+                myArticle:action.data.results,
+                myArticlePage:action.data
+            }
+        case MY_ARTICLE_LIST_PAGE:
+            return {
+                ...state,
+                myArticlePage:action.data,
+                myArticle:state.myArticle.concat(action.data.results)
             }
         default:
             return state

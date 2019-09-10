@@ -23,6 +23,7 @@ class Home extends Component{
         this.changeState = this.changeState.bind(this)
     }
     changeState(list){
+        console.log(list)
         const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
         this.setState({
             height:hei,

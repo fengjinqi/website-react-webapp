@@ -23,3 +23,29 @@ export const getArticleCommit = (id)=>{
         method:'get'
     })
 }
+/**
+ * 我的文章
+ * @param token
+ */
+export const getMyArticle = (token)=>{
+    return axios.request({
+        url:'api/me_article_list/',
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        method:'get'
+    })
+}
+/**
+ * 我的文章分页
+ * @param page
+ */
+export const getMyArticleListPage = (page,token)=>{
+    return axios.request({
+        url: 'api/me_article_list/?page='+page,
+          headers: {
+              'Authorization':`JWT ${token}`
+          },
+        method: 'get'
+    })
+}
