@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44436192-442b-4a16-b807-bceaa165e45d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ListView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/my/myArticle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/article.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginMain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/store/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/store/actionCreator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/store/actionCreator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/store/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/store/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/store/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/my/store/actionCreator.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
@@ -39,6 +26,18 @@
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="352">
+                <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -197,7 +196,6 @@
         <option value="$PROJECT_DIR$/src/utils/mobeil.js" />
         <option value="$PROJECT_DIR$/src/components/Share.js" />
         <option value="$PROJECT_DIR$/src/static/css/comm.less" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/pages/article/style.less" />
         <option value="$PROJECT_DIR$/src/pages/article/detail.js" />
         <option value="$PROJECT_DIR$/src/pages/home/store/actionCreators.js" />
@@ -225,6 +223,7 @@
         <option value="$PROJECT_DIR$/src/pages/my/store/actionCreator.js" />
         <option value="$PROJECT_DIR$/src/pages/my/myArticle.js" />
         <option value="$PROJECT_DIR$/src/pages/my/store/reducer.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -425,18 +424,18 @@
       <workItem from="1567388120300" duration="17613000" />
       <workItem from="1567577033346" duration="38013000" />
       <workItem from="1567823581782" duration="6447000" />
-      <workItem from="1567848578568" duration="32678000" />
+      <workItem from="1567848578568" duration="33536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191746000" />
+    <option name="totallyTimeSpent" value="192604000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.21406959" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.21406959" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5016949" side_tool="true" weight="0.21406959" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -450,7 +449,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.505295" side_tool="true" visible="true" weight="0.14032258" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.505295" side_tool="true" visible="true" weight="0.14032258" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.6775553" weight="0.4032258" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -515,16 +514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="222">
-            <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -861,6 +850,16 @@
           <folding>
             <element signature="e#0#65#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="352">
+            <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
