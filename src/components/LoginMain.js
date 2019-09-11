@@ -49,14 +49,14 @@ const Item = List.Item
                     <Item
                         arrow="horizontal"
                         thumb="https://www.fengjinqi.com/static/img/帖子.png"
-                        onClick={() => {alert()}}
+                        onClick={() => {getToken()?this.props.history.push('/person/forum'):this.props.history.push('/login')}}
                     >
                         我的帖子
                     </Item>
                     <Item
                         arrow="horizontal"
                         thumb="https://www.fengjinqi.com/static/img/我的粉丝.png"
-                        onClick={() => {alert()}}
+                        onClick={() => {getToken()?this.props.history.push('/person/myFan'):this.props.history.push('/login')}}
                     >
                         我的粉丝
                     </Item>

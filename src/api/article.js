@@ -49,3 +49,29 @@ export const getMyArticleListPage = (page,token)=>{
         method: 'get'
     })
 }
+/**
+ * 我的粉丝
+ * @param token
+ */
+export const getMyFan = (token)=>{
+    return axios.request({
+        url: 'api/UserFollows/?fan=1',
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        method: 'get'
+    })
+}
+/**
+ * 我的关注
+ * @param token
+ */
+export const getMyFollow = (token)=>{
+    return axios.request({
+        url: 'api/UserFollows/?follow=1',
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        method: 'get'
+    })
+}

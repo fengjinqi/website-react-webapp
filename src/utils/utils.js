@@ -14,6 +14,18 @@ export const getCommentCount=(item)=>{
     })
     return count+=item.article_comment_set.length
 }
+/**
+ * 获取帖子评论
+ * @param item
+ * @returns {*}
+ */
+export const getForumCommentCount=(item)=>{
+    let count = 0;
+    item.comment_set.map(el => {
+        return count+=el.parent_comment_set.length
+    })
+    return count+=item.comment_set.length
+}
 
 export const setToken = (token) => {
     Cookies.set(TOKEN_KEY, token, { expires: 30 })

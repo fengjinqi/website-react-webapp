@@ -7,6 +7,8 @@ import Person from './pages/my'
 import Login from './pages/login'
 import NotFound from './components/NotFound'
 import myArticle from './pages/my/myArticle'
+import myForum from './pages/my/myForum'
+import myFan from "./pages/my/myFan";
   class Router extends React.Component{
     render() {
         return(
@@ -19,6 +21,8 @@ import myArticle from './pages/my/myArticle'
                         <Route path='/article/detail/:id' exact component={ArticleDetail}/>
                         <Route path='/person/' exact component={Person}/>
                         <Route path='/person/article' component={myArticle}/>
+                        <Route path='/person/forum' component={myForum}/>
+                        <Route path='/person/myFan' component={myFan}/>
 
                         <Route component={NotFound}/>
                         {/*<Redirect form='/*' to='/'/>*/}

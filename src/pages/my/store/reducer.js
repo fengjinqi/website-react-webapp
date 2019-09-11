@@ -1,10 +1,11 @@
-import {MY_GETINFO,MY_ERROR,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE} from './actionTypes'
+import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST_PAGE,MY_FORUM_LIST,MY_FAN,MY_FOLLOW} from './actionTypes'
 const defaultState = {
     info:[],
-    error:[],
-    isShow:false,
     myArticle:[],
-    myArticlePage:[]
+    myArticlePage:[],
+    myForum:[],
+    myForumPage:[],
+    myFan:[]
 }
 
 export default (state=defaultState,action)=>{
@@ -13,12 +14,6 @@ export default (state=defaultState,action)=>{
             return {
                 ...state,
                 info:action.data,
-                isShow:true
-            }
-        case MY_ERROR:
-            return {
-                ...state,
-                error:action.error
             }
         case MY_ARTICLE_LIST:
             return {
@@ -31,6 +26,24 @@ export default (state=defaultState,action)=>{
                 ...state,
                 myArticlePage:action.data,
                 myArticle:state.myArticle.concat(action.data.results)
+            }
+        case MY_FORUM_LIST:
+            return {
+                ...state,
+                myForum:action.data.results,
+                myForumPage:action.data
+            }
+        case MY_FORUM_LIST_PAGE:
+            return {
+                ...state,
+                myForum:state.myForum.concat(action.data.results),
+                myForumPage:action.data
+            }
+        case MY_FAN:
+
+            return {
+                ...state,
+                myFan: action.data
             }
         default:
             return state

@@ -1,14 +1,14 @@
-import React,{Fragment} from 'react'
+import React,{Component,Fragment} from 'react'
 import {connect} from 'react-redux'
-import ReactDOM from 'react-dom'
-import {Icon, NavBar,WingBlank,ActivityIndicator,PullToRefresh,ListView} from "antd-mobile";
-import {HashRouter,NavLink} from 'react-router-dom'
-import {getToken,getCommentCount} from "../../utils/utils";
-import {getMyArticleListAxios,getMyArticleListPageAxios} from "./store/actionCreator";
+import { getMyForumListAxios, getMyForumListPageAxios} from "./store/actionCreator";
+import {getForumCommentCount, getToken} from "../../utils/utils";
+import {ActivityIndicator, Icon, ListView, NavBar, PullToRefresh, WingBlank} from "antd-mobile";
+import ReactDOM from "react-dom";
+import {HashRouter, NavLink} from "react-router-dom";
 const style={
     position:'initial'
 }
-class MyArticles extends React.Component{
+class MyForum extends Component{
     constructor(props) {
         super(props);
         const dataSource = new ListView.DataSource({
@@ -36,13 +36,14 @@ class MyArticles extends React.Component{
         this.props.getInit()
     }
     componentWillReceiveProps(nextProps, nextContext) {
+
         this.changeState(nextProps.list)
         this.setState({
             refreshing: false,
             isShow:false,
             isLoading: false,
             height:document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).offsetTop,
-            page:(nextProps.myArticlePage.next ? ++this.state.page:'')
+            page:(nextProps.myForumPage.next ? ++this.state.page:'')
         });
 
     }
@@ -79,9 +80,9 @@ class MyArticles extends React.Component{
                                 </div>
                                 <div className='list-header-right'><span>{rowData.category.name}</span></div>
                             </div>
-                            <div className='list-title'>
-                                <div className='list-title-left txt-cut'>{rowData.title}</div>
-                                <div className='list-title-right'><img src={rowData.list_pic} alt=""/></div>
+                            <div className='list-title'style={{height:'auto'}}>
+                                <div className='list-title-left txt-cut'style={{width:'100%'}}>{rowData.title}</div>
+                                {/*<div className='list-title-right'><img src={rowData.list_pic} alt=""/></div>*/}
                             </div>
                             <div className='list-desc'>
                                 {rowData.desc}
@@ -90,7 +91,7 @@ class MyArticles extends React.Component{
                                 <div className='list-footer-left'>
                                     <span className='click'>{rowData.click_nums}</span>
                                     <span className='comment'>
-                                    {getCommentCount(rowData)}
+                                    {getForumCommentCount(rowData)}
                                 </span>
                                 </div>
                                 <div className='list-footer-right'><NavLink to={{pathname:`/article/detail/${rowData.id}`}}>阅读全文→</NavLink></div>
@@ -110,7 +111,7 @@ class MyArticles extends React.Component{
                     mode="dark"
                     icon={<Icon type="left" />}
                     onLeftClick={() => this.props.history.goBack()}
-                >我的文章</NavBar>
+                >我的帖子</NavBar>
                 <ListView
                     ref={el => this.lv = el}
                     dataSource={this.state.dataSource}
@@ -132,25 +133,17 @@ class MyArticles extends React.Component{
             </Fragment>
         )
     }
-
 }
-const mapState=(state)=>({
-    list:state.my.myArticle,
-    myArticlePage:state.my.myArticlePage
+const mapState = (state)=>({
+    list:state.my.myForum,
+    myForumPage:state.my.myForumPage
 })
-const mapDispatch=(dispatch) =>({
-    getInit(){
-        dispatch(getMyArticleListAxios(getToken()))
+const mapDispatch =(dispatch)=>({
+    getInit() {
+        dispatch(getMyForumListAxios(getToken()))
     },
     getPage(page){
-        dispatch(getMyArticleListPageAxios(page,getToken()))
+        dispatch(getMyForumListPageAxios(page,getToken()))
     }
 })
-export default connect(mapState,mapDispatch)(MyArticles)
-
-
-
-
-
-
-
+export default connect(mapState,mapDispatch)(MyForum)
