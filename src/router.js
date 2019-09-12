@@ -9,6 +9,7 @@ import NotFound from './components/NotFound'
 import myArticle from './pages/my/myArticle'
 import myForum from './pages/my/myForum'
 import myFan from "./pages/my/myFan";
+import myFollows from "./pages/my/myFollows";
   class Router extends React.Component{
     render() {
         return(
@@ -23,6 +24,7 @@ import myFan from "./pages/my/myFan";
                         <Route path='/person/article' component={myArticle}/>
                         <Route path='/person/forum' component={myForum}/>
                         <Route path='/person/myFan' component={myFan}/>
+                        <Route path='/person/myFollows' component={myFollows}/>
 
                         <Route component={NotFound}/>
                         {/*<Redirect form='/*' to='/'/>*/}

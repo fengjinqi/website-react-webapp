@@ -5,7 +5,8 @@ const defaultState = {
     myArticlePage:[],
     myForum:[],
     myForumPage:[],
-    myFan:[]
+    myFan:[],
+    myFollow:[]
 }
 
 export default (state=defaultState,action)=>{
@@ -44,6 +45,11 @@ export default (state=defaultState,action)=>{
             return {
                 ...state,
                 myFan: action.data
+            }
+        case MY_FOLLOW:
+            return {
+                ...state,
+                myFollow: action.data
             }
         default:
             return state

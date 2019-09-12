@@ -82,7 +82,7 @@ export const getFanAxios = (toekn) =>{
 }
 
 export const getFollow =(data)=>({
-    type:MY_FAN,
+    type:MY_FOLLOW,
     data
 })
 export const getFollowAxios = (toekn) =>{

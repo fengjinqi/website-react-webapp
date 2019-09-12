@@ -63,7 +63,7 @@ const Item = List.Item
                     <Item
                         arrow="horizontal"
                         thumb="https://www.fengjinqi.com/static/img/我的关注.png"
-                        onClick={() => {alert()}}
+                        onClick={() => {getToken()?this.props.history.push('/person/myFollows'):this.props.history.push('/login')}}
                     >
                         我的关注
                     </Item>
