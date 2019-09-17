@@ -2,8 +2,8 @@ import React,{Component,Fragment} from 'react'
 import {connect} from 'react-redux'
 import { getFanAxios} from "./store/actionCreator";
 import {getToken} from "../../utils/utils";
-import {ActivityIndicator, Icon, NavBar, WingBlank,Button} from "antd-mobile";
-
+import {ActivityIndicator, Icon, NavBar, WingBlank, Button, Toast} from "antd-mobile";
+import {addMyFan} from './../../api/article'
 import {HashRouter, NavLink} from "react-router-dom";
 
 class MyForum extends Component{
@@ -23,7 +23,18 @@ class MyForum extends Component{
         });
 
     }
+    add(e){
+        let data={
+            follow:e.fan.id,
+            fan:e.follow.id
+        }
+        addMyFan(data,getToken()).then(res=>{
+            console.log(res)
+            Toast.success(res.data.message, 1);
+            this.props.getInit()
 
+        })
+    }
     render() {
         const {list} = this.props
         return(
@@ -46,7 +57,7 @@ class MyForum extends Component{
                             <div key={item.id} className='fan-main'>
                                 <div><img src={item.fan.user_imag?item.fan.user_imag:item.fan.user_image?item.fan.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/></div>
                                 <div className='fan-main-user'>{item.fan.username}</div>
-                                <div>{item.access?<Button type='primary'inline size="small" >已关注</Button>:<Button type='primary'inline size="small" >关注</Button>}</div>
+                                <div>{item.access?<Button type='primary'inline size="small" disabled='disabled'>已关注</Button>:<Button type='primary'inline size="small" onClick={()=>this.add(item)}>关注</Button>}</div>
 
                             </div>
                         )

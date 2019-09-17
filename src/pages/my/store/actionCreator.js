@@ -80,7 +80,11 @@ export const getFanAxios = (toekn) =>{
         })
     }
 }
-
+/**
+ * 我的关注
+ * @param data
+ * @returns {{data: *, type: string}}
+ */
 export const getFollow =(data)=>({
     type:MY_FOLLOW,
     data
@@ -92,3 +96,4 @@ export const getFollowAxios = (toekn) =>{
         })
     }
 }
+

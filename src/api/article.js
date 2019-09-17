@@ -50,6 +50,16 @@ export const getMyArticleListPage = (page,token)=>{
     })
 }
 /**
+ * 分类
+ */
+export const getArticleCate = ()=>{
+    return axios.request({
+        url: 'api/category/',
+        method: 'get'
+    })
+}
+
+/**
  * 我的粉丝
  * @param token
  */
@@ -73,5 +83,31 @@ export const getMyFollow = (token)=>{
             'Authorization':`JWT ${token}`
         },
         method: 'get'
+    })
+}
+
+/**
+ * 取消关注
+ * @param id
+ * @param token
+ */
+export const delMyFan = (id,token)=>{
+    return axios.request({
+        url: `/api/UserFollows/${id}/?follow=1`,
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        method: 'delete'
+    })
+}
+
+export const addMyFan = (data,token)=>{
+    return axios.request({
+        url: `/api/UserFollows/?follow=1`,
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        data,
+        method: 'post'
     })
 }

@@ -5,6 +5,7 @@ import {NavLink,HashRouter} from 'react-router-dom'
 import {getCommentCount} from '../../utils/utils'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
+import {getArticleCate} from './../../api/article'
 import './style.less'
 class Home extends Component{
     constructor(props) {
@@ -17,6 +18,7 @@ class Home extends Component{
             refreshing: true,
             isLoading: true,
             page:1,
+            categrty:null,
             height: document.documentElement.clientHeight,
             useBodyScroll: false,
         };
@@ -32,6 +34,11 @@ class Home extends Component{
     }
       componentDidMount() {
         this.props.getHomeList()
+          getArticleCate().then(res=>{
+              this.setState({
+                  categrty:res.data
+              })
+          })
     }
     componentWillReceiveProps(nextProps, nextContext) {
         this.changeState(nextProps.list)
@@ -120,6 +127,15 @@ class Home extends Component{
                         <ActivityIndicator toast text="正在加载" animating={isShow} />
                     </WingBlank>
                     <SearchBar placeholder="Search" onSubmit={this.submit} />
+                    <div className='nav'>
+                        <div>
+                            {this.state.categrty?this.state.categrty.map((item,index)=>{
+                                return(
+                                    <span key={item.id}>{item.name}</span>
+                                )
+                            }):''}
+                        </div>
+                    </div>
                     <ListView
                         ref={el => this.lv = el}
                         dataSource={this.state.dataSource}

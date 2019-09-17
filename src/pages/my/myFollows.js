@@ -1,9 +1,9 @@
 import React,{Component,Fragment} from 'react'
 import {connect} from 'react-redux'
-import {getFanAxios, getFollowAxios} from "./store/actionCreator";
+import {getFollowAxios} from "./store/actionCreator";
 import {getToken} from "../../utils/utils";
-import {ActivityIndicator, Icon, NavBar, WingBlank,Button} from "antd-mobile";
-
+import {ActivityIndicator, Icon, NavBar, WingBlank, Button, Toast} from "antd-mobile";
+import {delMyFan} from './../../api/article'
 import {HashRouter, NavLink} from "react-router-dom";
 
 class MyFollows extends Component{
@@ -24,7 +24,14 @@ class MyFollows extends Component{
         });
 
     }
-
+    del(e){
+        delMyFan(e,getToken()).then(res=>{
+            if(res.status==204){
+                Toast.success('取消关注成功', 1);
+                this.props.getInit()
+            }
+        })
+    }
     render() {
         const {list} = this.props
         return(
@@ -47,7 +54,7 @@ class MyFollows extends Component{
                             <div key={item.id} className='fan-main'>
                                 <div><img src={item.follow.user_imag?item.follow.user_imag:item.follow.user_image?item.follow.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/></div>
                                 <div className='fan-main-user'>{item.follow.username}</div>
-                                <div><Button type='primary'inline size="small" >取消关注</Button></div>
+                                <div><Button type='primary'inline size="small" onClick={()=>this.del(item.id)}>取消关注</Button></div>
 
                             </div>
                         )
@@ -64,6 +71,6 @@ const mapState = (state)=>({
 const mapDispatch =(dispatch)=>({
     getInit() {
         dispatch(getFollowAxios(getToken()))
-    },
+    }
 })
 export default connect(mapState,mapDispatch)(MyFollows)
