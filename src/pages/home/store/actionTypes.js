@@ -1,2 +1,5 @@
 export const HOME_GET_LIST = 'home/HOME_GET_LIST';
 export const HOME_GET_PAGING = 'home/HOME_GET_PAGING';
+export const HOME_GET_ARTICLE_SEARCH = 'home/HOME_GET_ARTICLE_SEARCH';
+export const HOME_GET_ARTICLE_SEARCH_PAGE = 'home/HOME_GET_ARTICLE_SEARCH_PAGE';
+

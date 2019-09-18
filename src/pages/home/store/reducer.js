@@ -23,7 +23,21 @@ export default (state = defaultState, action) => {
                 articleList: action.data,
                 list:state.list.concat(action.data.results)
             }
+		case actionTypes.HOME_GET_ARTICLE_SEARCH:
+			return {
+				...state,
+				articleList: action.data,
+				list:action.data.results,
 
+			}
+		case actionTypes.HOME_GET_ARTICLE_SEARCH_PAGE:
+			console.log(action)
+			return {
+				...state,
+				articleList: action.data,
+				list:state.list.concat(action.data.results)
+
+			}
 		default:
 			return state;
 	}

@@ -1,4 +1,5 @@
 import {getHomeList,getHomeListPage} from '../../../api/home';
+import {getArticleSaerch} from '../../../api/article';
 import * as actionTypes from './actionTypes';
 
 /**
@@ -42,3 +43,20 @@ export const getHomePage = (page) => {
 	}
 }
 
+export const getSerach = (data)=>({
+	type:actionTypes.HOME_GET_ARTICLE_SEARCH,
+	data
+})
+
+export const getSerachPage = (data)=>({
+	type:actionTypes.HOME_GET_ARTICLE_SEARCH_PAGE,
+	data
+})
+
+export const getSerachAxios = (name,page,type)=>{
+	return (dispatch)=>{
+		getArticleSaerch(name,page).then(res=>{
+			type?dispatch(getSerachPage(res.data)):dispatch(getSerach(res.data))
+		})
+	}
+}

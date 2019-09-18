@@ -58,6 +58,17 @@ export const getArticleCate = ()=>{
         method: 'get'
     })
 }
+/**
+ * 文章分类
+ * @param name
+ * @param page
+ */
+export const getArticleSaerch = (name,page)=>{
+    return axios.request({
+        url: `api/article_list/?category=${name}&page=${page}`,
+        method: 'get'
+    })
+}
 
 /**
  * 我的粉丝
@@ -100,7 +111,11 @@ export const delMyFan = (id,token)=>{
         method: 'delete'
     })
 }
-
+/**
+ * 新增关注
+ * @param data
+ * @param token
+ */
 export const addMyFan = (data,token)=>{
     return axios.request({
         url: `/api/UserFollows/?follow=1`,

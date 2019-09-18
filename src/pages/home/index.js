@@ -2,10 +2,10 @@ import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
 import { ActivityIndicator, WingBlank, ListView,SearchBar,PullToRefresh} from 'antd-mobile';
 import {NavLink,HashRouter} from 'react-router-dom'
-import {getCommentCount} from '../../utils/utils'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import {getArticleCate} from './../../api/article'
+import {getCommentCount} from './../../utils/utils'
 import './style.less'
 class Home extends Component{
     constructor(props) {
@@ -21,6 +21,7 @@ class Home extends Component{
             categrty:null,
             height: document.documentElement.clientHeight,
             useBodyScroll: false,
+            search:true
         };
         this.changeState = this.changeState.bind(this)
     }
@@ -45,6 +46,7 @@ class Home extends Component{
         this.setState({
             refreshing: false,
             isLoading: false,
+            search:false,
             height:document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).offsetTop-50,
             page:(nextProps.page.next ? ++this.state.page:'')
         });
@@ -79,13 +81,22 @@ class Home extends Component{
     onEndReached = ()=>{
         if(this.state.page){
             this.setState({ refreshing: true, isLoading: true, });
-            this.props.getHomePage(this.state.page);
+            window.sessionStorage.getItem('serach')?this.props.getSerach(window.sessionStorage.getItem('serach'),this.state.page,true):this.props.getHomePage(this.state.page);
+
         }
+
+    }
+    serach(e){
+        this.setState({
+            search:true
+        })
+        window.sessionStorage.setItem('serach',e)
+        this.props.getSerach(e,1,)
 
     }
     render() {
 
-        const {isShow} = this.props
+        //const {isShow} = this.props
         const row =  (rowData, sectionID, rowID) => {
             return(
                 <HashRouter>
@@ -124,14 +135,14 @@ class Home extends Component{
             return(
                 <div>
                     <WingBlank>
-                        <ActivityIndicator toast text="正在加载" animating={isShow} />
+                        <ActivityIndicator toast text="正在加载" animating={this.state.search} />
                     </WingBlank>
                     <SearchBar placeholder="Search" onSubmit={this.submit} />
                     <div className='nav'>
                         <div>
                             {this.state.categrty?this.state.categrty.map((item,index)=>{
                                 return(
-                                    <span key={item.id}>{item.name}</span>
+                                    <span key={item.id} onClick={()=>this.serach(item.id)}>{item.name}</span>
                                 )
                             }):''}
                         </div>
@@ -144,8 +155,6 @@ class Home extends Component{
                         style={{
                             height: this.state.height,
                         }}
-
-                        onScroll={() => { console.log('scroll'); }}
                         renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
                             {this.state.isLoading ? 'Loading...' : '没有更多数据了'}
                         </div>)}
@@ -176,6 +185,9 @@ const mapDispatch = (dispatch) => ({
     },
     getHomePage(page){
           dispatch(actionCreators.getHomePage(page))
+    },
+    getSerach(name,page,type){
+          dispatch(actionCreators.getSerachAxios(name,page,type))
     }
 })
 export default connect(mapState,mapDispatch)(Home)
