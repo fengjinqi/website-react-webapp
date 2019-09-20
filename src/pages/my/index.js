@@ -38,7 +38,7 @@ class Person extends React.Component{
     }
     render() {
         const {info,isShow} = this.props
-        if (!getToken())return   <LoginMain/>
+        if (!getToken())return   <LoginMain  history={this.props.history}/>
         if (!this.state.type){
             return (
                 <div>
@@ -49,7 +49,9 @@ class Person extends React.Component{
             )
         } else{
             return(
+
                 <Fragment>
+
                     {this.state._visite?
 
                         <LoginMain
@@ -57,42 +59,12 @@ class Person extends React.Component{
                             image={info[0].user_imag?info[0].user_imag:info[0].user_image?info[0].user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'}
                             itemLogOut={this.logout.bind(this)}
                             history={this.props.history}
+                            getInfo={this.props.getInfo.bind(this)}
                         />:
-                        <LoginMain/>
+                        <LoginMain
 
+                            history={this.props.history}/>
                     }
-
-                    {/* <Fragment>
-                {this.state.type?
-                    <div>
-                        <NavBar
-                            mode="dark"
-                            icon={<Icon type="left" />}
-                            onLeftClick={() => this.props.history.goBack()}
-                            rightContent={
-                                info[0]?<div onClick={this.logout}>退出</div>:''
-
-                            }
-                        >个人中心</NavBar>
-                        <div className="container">
-                            <div className="container-header">
-                                {info[0]?<div className='container-header-main'>
-                                    <img src={info[0].user_imag?info[0].user_imag:info[0].user_image?info[0].user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/>
-                                    <Link to='/login'>{info[0].username}</Link>
-                                </div>:
-                                    <div className='container-header-main'>
-                                        <img src='https://www.fengjinqi.com/static/img/pc-icon.png' alt=""/>
-                                        <Link to='/login'>登录/注册</Link>
-                                    </div>}
-
-                            </div>
-                        </div>
-
-                    </div>
-                    :null}
-
-
-                    </Fragment>*/}
                 </Fragment>
 
 

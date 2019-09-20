@@ -1,19 +1,15 @@
 import React,{Component,Fragment}  from 'react'
 import PropTypes from 'prop-types';
-import {Icon, NavBar,List} from "antd-mobile";
+import {Icon, NavBar,List,Modal} from "antd-mobile";
 import {Link} from "react-router-dom";
 import {getToken} from '../utils/utils'
+import Button from "antd-mobile/lib/button";
 const Item = List.Item
+const alert = Modal.alert;
  class LoginMain extends Component{
-     constructor(props){
-         super(props)
-         this.logou = this.logou.bind(this)
-     }
-     logou(){
-         this.props.itemLogOut()
-
-     }
     render() {
+        {console.log(this.props)}
+
         return(
             <Fragment>
                 <NavBar
@@ -29,7 +25,8 @@ const Item = List.Item
                     <div className="container-header">
                         <div className='container-header-main'>
                                 <img src={this.props.image} alt=""/>
-                            {this.props.name?<span>{this.props.name}</span>:<Link to='/login'>登录/注册</Link>}
+                            {this.props.name?<Link to='' className='user'><span>{this.props.name}</span><Icon type='right
+'/></Link>:<Link to='/login' className='user'>登录/注册</Link>}
 
                             </div>
                            {/* <div className='container-header-main'>
@@ -38,7 +35,7 @@ const Item = List.Item
                             </div>*/}
 
                     </div>
-                    {console.log(this.props)}
+
                     <Item
                         arrow="horizontal"
                         thumb="https://www.fengjinqi.com/static/img/文章.png"
@@ -67,13 +64,30 @@ const Item = List.Item
                     >
                         我的关注
                     </Item>
-                    <Item
+                   {/* <Item
                         arrow="horizontal"
                         thumb="https://www.fengjinqi.com/static/img/设 置.png"
                         onClick={() => {alert()}}
                     >
-                        设置
-                    </Item>
+
+                    </Item>*/}
+                    {getToken()?<Button type='warning' style={{marginTop:20}}  onClick={() =>
+                        alert('提示', '确认退出登录?', [
+                            { text: '取消', onPress: () => console.log('cancel') },
+                            {
+                                text: '确认',
+                                onPress: () =>this.props.itemLogOut()
+                                    /*new Promise((resolve) => {
+                                        delToken()
+                                        Toast.info('退出成功', 1);
+                                        _this()
+                                        resolve()
+
+                                        //setTimeout(resolve, 1000);
+                                    }),*/
+                            },
+                        ])
+                    }>退出登录</Button>:''}
                 </div>
             </Fragment>
             )
@@ -84,9 +98,12 @@ const Item = List.Item
 LoginMain.propsTypes = {
     name:PropTypes.string,
     image:PropTypes.string,
-    itemLogOut:PropTypes.func
+    itemLogOut:PropTypes.func,
+    history:PropTypes.func,
+
 }
 LoginMain.defaultProps = {
-     image:'https://www.fengjinqi.com/static/img/pc-icon.png'
+     image:'https://www.fengjinqi.com/static/img/pc-icon.png',
+
 }
 export default LoginMain
