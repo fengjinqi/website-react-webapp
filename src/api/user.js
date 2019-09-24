@@ -25,3 +25,13 @@ export const getInfo = (token) =>{
         method:'get'
     })
 }
+export const putInfoImg = (id,token,data) =>{
+    return axios.request({
+        url:`/api/apiinfo/${id}/`,
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        data:data,
+        method:'put'
+    })
+}

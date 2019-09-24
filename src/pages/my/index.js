@@ -16,14 +16,20 @@ class Person extends React.Component{
     componentDidMount() {
         this.props.getInfo()
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    /*componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log(prevProps)
         if(prevProps.info.detail&&prevProps.info.detail==="Signature has expired."){
             delToken()
             Toast.fail('签名已过期,请重新登录',1)
             this.props.history.push('/login')
         }
-    }
+    }*/
     componentWillReceiveProps(nextProps, nextContext) {
+        if(nextProps.info.detail&&nextProps.info.detail==="Signature has expired."){
+            delToken()
+            Toast.fail('签名已过期,请重新登录',1)
+            this.props.history.push('/login')
+        }
         if(nextProps.info) this.setState({
             type:true,
             _visite:true

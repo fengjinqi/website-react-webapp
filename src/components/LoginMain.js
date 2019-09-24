@@ -25,7 +25,7 @@ const alert = Modal.alert;
                     <div className="container-header">
                         <div className='container-header-main'>
                                 <img src={this.props.image} alt=""/>
-                            {this.props.name?<Link to='' className='user'><span>{this.props.name}</span><Icon type='right
+                            {this.props.name?<Link to='/person/info' className='user'><span>{this.props.name}</span><Icon type='right
 '/></Link>:<Link to='/login' className='user'>登录/注册</Link>}
 
                             </div>

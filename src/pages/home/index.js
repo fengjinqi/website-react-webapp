@@ -26,7 +26,6 @@ class Home extends Component{
         this.changeState = this.changeState.bind(this)
     }
     changeState(list){
-        console.log(list)
         const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
         this.setState({
             height:hei,
@@ -40,6 +39,7 @@ class Home extends Component{
                   categrty:res.data
               })
           })
+          window.sessionStorage.removeItem('serach')
     }
     componentWillReceiveProps(nextProps, nextContext) {
         this.changeState(nextProps.list)
@@ -86,12 +86,15 @@ class Home extends Component{
         }
 
     }
+
+
     serach(e){
         this.setState({
             search:true
         })
         window.sessionStorage.setItem('serach',e)
         this.props.getSerach(e,1,)
+        document.getElementsByClassName('am-list-view-scrollview')[0].scrollTop=0
 
     }
     render() {
