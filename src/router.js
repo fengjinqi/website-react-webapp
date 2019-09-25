@@ -11,6 +11,7 @@ import myForum from './pages/my/myForum'
 import myFan from "./pages/my/myFan";
 import myFollows from "./pages/my/myFollows";
 import Info from "./pages/my/myInfo";
+import InfoUpdate from "./pages/my/myInfoDe";
   class Router extends React.Component{
     render() {
         return(
@@ -27,6 +28,7 @@ import Info from "./pages/my/myInfo";
                         <Route path='/person/myFan' component={myFan}/>
                         <Route path='/person/myFollows' component={myFollows}/>
                         <Route path='/person/info' component={Info}/>
+                        <Route path='/person/update' component={InfoUpdate}/>
 
                         <Route component={NotFound}/>
                         {/*<Redirect form='/*' to='/'/>*/}

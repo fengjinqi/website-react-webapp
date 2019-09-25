@@ -115,7 +115,7 @@ console.log(window.returnCitySN['cname'])
                         </div>
                         <Editor.EditorShow config={
                             {
-                                markdown: this.getContent()
+                                markdown: this.getContent(),
                             }
                         }/>
                         {comm()}
