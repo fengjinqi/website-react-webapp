@@ -1,4 +1,4 @@
-import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST_PAGE,MY_FORUM_LIST,MY_FAN,MY_FOLLOW} from './actionTypes'
+import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST_PAGE,MY_FORUM_LIST,MY_FAN,MY_FOLLOW,MY_GETMESSAGECOUNT} from './actionTypes'
 const defaultState = {
     info:[],
     myArticle:[],
@@ -6,7 +6,8 @@ const defaultState = {
     myForum:[],
     myForumPage:[],
     myFan:[],
-    myFollow:[]
+    myFollow:[],
+    myMessageType:[]
 }
 
 export default (state=defaultState,action)=>{
@@ -50,6 +51,11 @@ export default (state=defaultState,action)=>{
             return {
                 ...state,
                 myFollow: action.data
+            }
+        case MY_GETMESSAGECOUNT:
+            return {
+                ...state,
+                myMessageType: action.data
             }
         default:
             return state

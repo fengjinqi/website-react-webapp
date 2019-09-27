@@ -8,18 +8,16 @@ const Item = List.Item
 const alert = Modal.alert;
  class LoginMain extends Component{
     render() {
-        {console.log(this.props)}
-
         return(
             <Fragment>
+                {console.log(this.props.message)}
                 <NavBar
                     mode="dark"
                     icon={<Icon type="left" />}
                     onLeftClick={() => this.props.history.goBack()}
                     rightContent={
-                        this.props.name?<div onClick={ this.props.itemLogOut}>退出</div>:''
-
-                    }
+                        this.props.name?<div className=' fa  fa-commenting-o'>{this.props.message.count>0?<b className='commenting'></b>:''}</div>:''
+    }
                 >个人中心</NavBar>
                 <div className="container">
                     <div className="container-header">
@@ -29,11 +27,6 @@ const alert = Modal.alert;
 '/></Link>:<Link to='/login' className='user'>登录/注册</Link>}
 
                             </div>
-                           {/* <div className='container-header-main'>
-                                <img src='https://www.fengjinqi.com/static/img/pc-icon.png' alt=""/>
-                                <Link to='/login'>登录/注册</Link>
-                            </div>*/}
-
                     </div>
 
                     <Item
@@ -64,13 +57,6 @@ const alert = Modal.alert;
                     >
                         我的关注
                     </Item>
-                   {/* <Item
-                        arrow="horizontal"
-                        thumb="https://www.fengjinqi.com/static/img/设 置.png"
-                        onClick={() => {alert()}}
-                    >
-
-                    </Item>*/}
                     {getToken()?<Button type='warning' style={{marginTop:20}}  onClick={() =>
                         alert('提示', '确认退出登录?', [
                             { text: '取消', onPress: () => console.log('cancel') },
@@ -100,6 +86,7 @@ LoginMain.propsTypes = {
     image:PropTypes.string,
     itemLogOut:PropTypes.func,
     history:PropTypes.func,
+
 
 }
 LoginMain.defaultProps = {

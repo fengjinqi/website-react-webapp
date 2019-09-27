@@ -3,7 +3,7 @@ import {ActivityIndicator, Toast, WingBlank} from 'antd-mobile'
 import {connect} from 'react-redux'
 import './style.less'
 import {getToken,delToken} from '../../utils/utils'
-import {getMyInfoAxios} from './store/actionCreator'
+import {getMessageCountAxios, getMyInfoAxios} from './store/actionCreator'
 import LoginMain from '../../components/LoginMain'
 class Person extends React.Component{
     constructor(props){
@@ -25,13 +25,13 @@ class Person extends React.Component{
         }
     }*/
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log(nextProps.info)
+        console.log(nextProps)
         if(nextProps.info.detail && nextProps.info.detail==="Signature has expired." || nextProps.info.detail && nextProps.info.detail==="Invalid signature."){
             delToken()
             Toast.fail('签名已过期,请重新登录',1)
             this.props.history.push('/login')
         }
-        if(nextProps.info) this.setState({
+        if(nextProps.info&&nextProps.myMessageType) this.setState({
             type:true,
             _visite:true
         })
@@ -44,7 +44,7 @@ class Person extends React.Component{
         })
     }
     render() {
-        const {info} = this.props
+        const {info,myMessageType} = this.props
         console.log(info)
         if (!getToken())return   <LoginMain  history={this.props.history}/>
         if (!this.state.type){
@@ -68,6 +68,7 @@ class Person extends React.Component{
                             itemLogOut={this.logout.bind(this)}
                             history={this.props.history}
                             getInfo={this.props.getInfo.bind(this)}
+                            message={myMessageType}
                         />:
                         <LoginMain
 
@@ -87,11 +88,15 @@ class Person extends React.Component{
 const mapState=(state)=>({
     info:state.my.info,
     error:state.my.error,
-    isShow:state.my.isShow
+    isShow:state.my.isShow,
+    myMessageType:state.my.myMessageType
 })
 const mapDispatch=(dispatch)=>({
     getInfo(){
-        if(getToken()){dispatch(getMyInfoAxios(getToken()))}
+        if(getToken()){
+            dispatch(getMyInfoAxios(getToken()))
+            dispatch(getMessageCountAxios(getToken()))
+        }
     }
 })
 export default connect(mapState,mapDispatch)(Person)

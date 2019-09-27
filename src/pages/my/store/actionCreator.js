@@ -1,5 +1,5 @@
-import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST,MY_FORUM_LIST_PAGE,MY_FAN,MY_FOLLOW} from './actionTypes'
-import {getInfo} from '../../../api/user'
+import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST,MY_FORUM_LIST_PAGE,MY_FAN,MY_FOLLOW,MY_GETMESSAGECOUNT} from './actionTypes'
+import {getInfo,getMessage} from '../../../api/user'
 import {getMyArticle,getMyArticleListPage,getMyFan,getMyFollow} from '../../../api/article'
 import {getMyForum,getMyForumListPage} from '../../../api/forum'
 
@@ -97,3 +97,17 @@ export const getFollowAxios = (toekn) =>{
     }
 }
 
+
+export const getMessageCount = (data) =>({
+    type:MY_GETMESSAGECOUNT,
+    data
+})
+
+export const getMessageCountAxios = (token)=>{
+    return (dispatch)=>{
+        getMessage(token).then(res=>{
+            console.log(res)
+            dispatch(getMessageCount(res.data))
+        })
+    }
+}
