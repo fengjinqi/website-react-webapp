@@ -12,6 +12,7 @@ import myFan from "./pages/my/myFan";
 import myFollows from "./pages/my/myFollows";
 import Info from "./pages/my/myInfo";
 import InfoUpdate from "./pages/my/myInfoDe";
+import myMessageList from "./pages/my/myMessageList";
   class Router extends React.Component{
     render() {
         return(
@@ -29,6 +30,7 @@ import InfoUpdate from "./pages/my/myInfoDe";
                         <Route path='/person/myFollows' component={myFollows}/>
                         <Route path='/person/info' component={Info}/>
                         <Route path='/person/update' component={InfoUpdate}/>
+                        <Route path='/person/message' component={myMessageList}/>
 
                         <Route component={NotFound}/>
                         {/*<Redirect form='/*' to='/'/>*/}

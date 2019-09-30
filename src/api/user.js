@@ -43,12 +43,22 @@ export const putInfoImg = (id,token,data) =>{
 }
 
 /**
- * 获取消息列表
+ * 个人中心获取消息列表
  * @param token
  */
 export const getMessage = (token)=>{
     return axios.request({
         url:`/api/UserMessages/?type=unread`,
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        method:'get'
+    })
+}
+
+export const appGetMessage = (token)=>{
+    return axios.request({
+        url:`/api/AppMessage/`,
         headers: {
             'Authorization':`JWT ${token}`
         },

@@ -106,7 +106,6 @@ export const getMessageCount = (data) =>({
 export const getMessageCountAxios = (token)=>{
     return (dispatch)=>{
         getMessage(token).then(res=>{
-            console.log(res)
             dispatch(getMessageCount(res.data))
         })
     }

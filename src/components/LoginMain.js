@@ -10,13 +10,12 @@ const alert = Modal.alert;
     render() {
         return(
             <Fragment>
-                {console.log(this.props.message)}
                 <NavBar
                     mode="dark"
                     icon={<Icon type="left" />}
                     onLeftClick={() => this.props.history.goBack()}
                     rightContent={
-                        this.props.name?<div className=' fa  fa-commenting-o'>{this.props.message.count>0?<b className='commenting'></b>:''}</div>:''
+                        this.props.name?<Link to='/person/message' style={{color:'#fff'}}><div className=' fa  fa-commenting-o'>{this.props.message.count>0?<b className='commenting'></b>:''}</div></Link>:''
     }
                 >个人中心</NavBar>
                 <div className="container">

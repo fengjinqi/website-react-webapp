@@ -16,6 +16,13 @@ class Person extends React.Component{
     componentDidMount() {
         this.props.getInfo()
     }
+    componentWillUnmount() {
+        this.setState({
+            type:false,
+            _visite:false
+        })
+    }
+
     /*componentDidUpdate(prevProps, prevState, snapshot) {
         console.log(prevProps)
         if(prevProps.info.detail&&prevProps.info.detail==="Signature has expired."){
@@ -25,7 +32,6 @@ class Person extends React.Component{
         }
     }*/
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log(nextProps)
         if(nextProps.info.detail && nextProps.info.detail==="Signature has expired." || nextProps.info.detail && nextProps.info.detail==="Invalid signature."){
             delToken()
             Toast.fail('签名已过期,请重新登录',1)
@@ -59,8 +65,7 @@ class Person extends React.Component{
             return(
 
                 <Fragment>
-
-                    {this.state._visite?
+                    {this.state._visite&&info[0]?
 
                         <LoginMain
                             name={info[0].username}
