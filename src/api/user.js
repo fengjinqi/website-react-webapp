@@ -55,7 +55,10 @@ export const getMessage = (token)=>{
         method:'get'
     })
 }
-
+/**
+ * 消息列表
+ * @param token
+ */
 export const appGetMessage = (token)=>{
     return axios.request({
         url:`/api/AppMessage/`,
@@ -63,5 +66,16 @@ export const appGetMessage = (token)=>{
             'Authorization':`JWT ${token}`
         },
         method:'get'
+    })
+}
+
+export const appPutMessage = (token,data,id)=>{
+    return axios.request({
+        url:`/api/AppMessage/${id}/`,
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        data:data,
+        method:'put'
     })
 }

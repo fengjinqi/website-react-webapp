@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Icon, NavBar,List,SwipeAction,Toast} from "antd-mobile";
-import {appGetMessage} from '../../api/user'
+import {appGetMessage,appPutMessage} from '../../api/user'
 import {Link} from "react-router-dom";
 import {getToken} from "../../utils/utils";
 
@@ -24,7 +24,11 @@ class myMessageList extends React.Component{
             }
         })
     }
-
+    update(e){
+        appPutMessage(getToken(),{has_read:true},e.id).then(res=>{
+            console.log(res)
+        })
+    }
     render() {
         let data = this.state.data
         return(
@@ -52,8 +56,8 @@ class myMessageList extends React.Component{
                                                 style: { backgroundColor: '#F4333C', color: 'white' },
                                             },
                                         ]}
-                                        onOpen={() => console.log('global open')}
-                                        onClose={() => console.log('global close')}
+                      /*                  onOpen={() => console.log('global open')}
+                                        onClose={() => console.log('global close')}*/
                                     >
                                         <List.Item
                                             // extra="More"
@@ -73,7 +77,7 @@ class myMessageList extends React.Component{
                                         right={[
                                             {
                                                 text: '已读',
-                                                onPress: () => console.log('cancel'),
+                                                onPress: ()=>this.update(item),
                                                 style: { backgroundColor: '#ddd', color: 'white' },
                                             },
                                             {
@@ -82,8 +86,8 @@ class myMessageList extends React.Component{
                                                 style: { backgroundColor: '#F4333C', color: 'white' },
                                             },
                                         ]}
-                                        onOpen={() => console.log('global open')}
-                                        onClose={() => console.log('global close')}
+                                  /*      onOpen={() => console.log('global open')}
+                                        onClose={() => console.log('global close')}*/
                                     >
                                         <List.Item
                                             // extra="More"
