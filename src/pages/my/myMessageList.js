@@ -1,18 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Icon, NavBar,List,SwipeAction,Toast} from "antd-mobile";
+import {Icon, NavBar,List,SwipeAction,Toast,Modal} from "antd-mobile";
 import {appGetMessage,appPutMessage} from '../../api/user'
-import {Link} from "react-router-dom";
 import {getToken} from "../../utils/utils";
 
 class myMessageList extends React.Component{
     constructor(props){
         super(props)
         this.state ={
-            data:[]
+            data:[],
+            modal1:false,
+            message:null
         }
     }
     componentDidMount() {
+        this.getList()
+    }
+    getList(){
         Toast.loading('加载中...',0)
         appGetMessage(getToken()).then(res=>{
             Toast.hide()
@@ -25,9 +29,33 @@ class myMessageList extends React.Component{
         })
     }
     update(e){
-        appPutMessage(getToken(),{has_read:true},e.id).then(res=>{
+        e.has_read=true
+        appPutMessage(getToken(),e,e.id).then(res=>{
             console.log(res)
+           window.location.reload()
         })
+    }
+    go(e){
+        if(e.url){
+            window.location.href=window.location.origin+'/#'+e.url
+        }else{
+            this.setState({
+                modal1:true,
+                message:e.message
+            })
+        }
+
+    }
+    showModal = key => (e) => {
+        e.preventDefault(); // 修复 Android 上点击穿透
+        this.setState({
+            [key]: true,
+        });
+    }
+    onClose = key => () => {
+        this.setState({
+            [key]: false,
+        });
     }
     render() {
         let data = this.state.data
@@ -52,7 +80,7 @@ class myMessageList extends React.Component{
                                         right={[
                                             {
                                                 text: '删除',
-                                                onPress: () => console.log('delete'),
+                                                onPress: () => this.del(item),
                                                 style: { backgroundColor: '#F4333C', color: 'white' },
                                             },
                                         ]}
@@ -62,7 +90,7 @@ class myMessageList extends React.Component{
                                         <List.Item
                                             // extra="More"
                                             arrow="horizontal"
-                                            onClick={e => console.log(e)}
+                                            onClick={e =>this.go(item)}
                                         >
                                             {item.message}
                                         </List.Item>
@@ -82,7 +110,7 @@ class myMessageList extends React.Component{
                                             },
                                             {
                                                 text: '删除',
-                                                onPress: () => console.log('delete'),
+                                                onPress: () => this.del(item),
                                                 style: { backgroundColor: '#F4333C', color: 'white' },
                                             },
                                         ]}
@@ -90,9 +118,8 @@ class myMessageList extends React.Component{
                                         onClose={() => console.log('global close')}*/
                                     >
                                         <List.Item
-                                            // extra="More"
                                             arrow="horizontal"
-                                            onClick={e => console.log(e)}
+                                            onClick={e =>this.go(item)}
                                         >
                                            <b className='commenting'style={{display:'inline-block'}}></b> {item.message}
                                         </List.Item>
@@ -103,7 +130,19 @@ class myMessageList extends React.Component{
                         }):''
                     }
 
+
                 </List>
+                <Modal
+                    visible={this.state.modal1}
+                    transparent
+                    maskClosable={false}
+                    onClose={this.onClose('modal1')}
+                    title="提示"
+                    footer={[{ text: 'Ok', onPress: () => { console.log('ok'); this.onClose('modal1')(); } }]}
+                >
+
+                    <p id='p' dangerouslySetInnerHTML={{ __html:this.state.message }}  />
+                </Modal>
             </div>
         )
     }

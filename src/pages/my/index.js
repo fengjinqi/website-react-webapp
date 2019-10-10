@@ -32,7 +32,8 @@ class Person extends React.Component{
         }
     }*/
     componentWillReceiveProps(nextProps, nextContext) {
-        if(nextProps.info.detail && nextProps.info.detail==="Signature has expired." || nextProps.info.detail && nextProps.info.detail==="Invalid signature."){
+        console.log(nextProps.info.detail )
+        if(nextProps.info.detail && nextProps.info.detail==="Signature has expired." || nextProps.info.detail && nextProps.info.detail==="Error decoding signature."|| nextProps.info.detail|| nextProps.info.detail && nextProps.info.detail==="Invalid signature."){
             delToken()
             Toast.fail('签名已过期,请重新登录',1)
             this.props.history.push('/login')
