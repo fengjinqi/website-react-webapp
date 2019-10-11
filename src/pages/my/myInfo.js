@@ -1,7 +1,7 @@
 import React,{Fragment} from 'react'
 import {Icon, NavBar,Toast} from "antd-mobile";
 import {connect} from 'react-redux'
-import {getToken,delToken} from "../../utils/utils";
+import {getToken, delToken, setUser, delUser} from "../../utils/utils";
 import {getMyInfoAxios} from "./store/actionCreator";
 import {putInfoImg} from "../../api/user";
 class Info extends React.Component{
@@ -23,6 +23,7 @@ class Info extends React.Component{
     }
     componentWillReceiveProps(nextProps, nextContext) {
         if(nextProps.info){
+            setUser(nextProps.info[0])
             this.setState({
                 username:nextProps.info[0].username,
                 info:nextProps.info[0].info,
@@ -64,6 +65,7 @@ class Info extends React.Component{
             Toast.hide()
             if(res.data.success=='ok'){
                 delToken()
+                delUser()
                 Toast.success('修改成功，重新登录',1)
                 this.props.history.push('/login')
             }else{

@@ -2,7 +2,7 @@ import React,{Fragment} from 'react'
 import {ActivityIndicator, Toast, WingBlank} from 'antd-mobile'
 import {connect} from 'react-redux'
 import './style.less'
-import {getToken,delToken} from '../../utils/utils'
+import {getToken, delToken, delUser, setUser, getUser} from '../../utils/utils'
 import {getMessageCountAxios, getMyInfoAxios} from './store/actionCreator'
 import LoginMain from '../../components/LoginMain'
 class Person extends React.Component{
@@ -33,10 +33,14 @@ class Person extends React.Component{
     }*/
     componentWillReceiveProps(nextProps, nextContext) {
         console.log(nextProps.info.detail )
-        if(nextProps.info.detail && nextProps.info.detail==="Signature has expired." || nextProps.info.detail && nextProps.info.detail==="Error decoding signature."|| nextProps.info.detail|| nextProps.info.detail && nextProps.info.detail==="Invalid signature."){
+        if(nextProps.info.detail){
             delToken()
+            delUser()
             Toast.fail('签名已过期,请重新登录',1)
             this.props.history.push('/login')
+        }else{
+            setUser(nextProps.info[0])
+            console.log(getUser())
         }
         if(nextProps.info&&nextProps.myMessageType) this.setState({
             type:true,
@@ -45,6 +49,7 @@ class Person extends React.Component{
     }
     logout=()=>{
         delToken()
+        delUser()
         Toast.fail('退出成功',1)
         this.setState({
             _visite:false
@@ -52,7 +57,6 @@ class Person extends React.Component{
     }
     render() {
         const {info,myMessageType} = this.props
-        console.log(info)
         if (!getToken())return   <LoginMain  history={this.props.history}/>
         if (!this.state.type){
             return (

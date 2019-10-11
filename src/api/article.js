@@ -126,3 +126,14 @@ export const addMyFan = (data,token)=>{
         method: 'post'
     })
 }
+
+export const addCommt = (token,data)=>{
+    return axios.request({
+        url:'/api/article_Comment/',
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        data,
+        method:'post'
+    })
+}

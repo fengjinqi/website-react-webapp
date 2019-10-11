@@ -2,9 +2,9 @@ import React from 'react'
 import {Icon, NavBar} from "antd-mobile";
 import '../../static/fonts/font-awesome-4.7.0/css/font-awesome.css'
 import './style.less'
-import {Login as getToken} from '../../api/user'
+import {Login as getToken,getInfo} from '../../api/user'
 import {Toast} from 'antd-mobile'
-import {setToken} from '../../utils/utils'
+import {setToken,getQueryString,getToken as getJwt,setUser} from '../../utils/utils'
 class Login extends React.Component{
     constructor(props){
         super(props)
@@ -16,8 +16,11 @@ class Login extends React.Component{
         }
         this.Change = this.Change.bind(this)
     }
-    submit(){
+    componentDidMount() {
+        if(getJwt()) this.props.history.push('/person')
+    }
 
+    submit(){
         var regex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
         if (!regex.test(this.state.username)) this.setState({userError:'请输入正确邮箱'})
         if (!this.state.password) this.setState({passError:'请输入密码'})
@@ -29,7 +32,15 @@ class Login extends React.Component{
             getToken(data).then(res=>{
                 setToken(res.data.token)
                 //Toast.success('登录成功',1)
-                this.props.history.push('/person')
+                getInfo(getJwt()).then(res=>{
+                    setUser(res.data[0])
+                })
+                if(getQueryString('next')){
+                    this.props.history.push(`${getQueryString('next')}`)
+                }else{
+                    this.props.history.push('/person')
+                }
+
             }).catch(err=>{
                 Toast.fail(err.response.data.non_field_errors[0], 1);
             })

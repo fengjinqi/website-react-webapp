@@ -50,7 +50,7 @@ class Home extends Component{
             height:document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).offsetTop-50,
             page:(nextProps.page.next ? ++this.state.page:'')
         });
-
+        console.log(this.state.page)
     }
 
     /**
@@ -90,7 +90,8 @@ class Home extends Component{
 
     serach(e){
         this.setState({
-            search:true
+            search:true,
+            page:1
         })
         window.sessionStorage.setItem('serach',e)
         this.props.getSerach(e,1,)

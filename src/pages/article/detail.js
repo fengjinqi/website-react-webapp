@@ -1,15 +1,15 @@
 import React from 'react'
-import {NavBar, Icon, WingBlank, ActivityIndicator} from 'antd-mobile'
+import {NavBar, Icon, WingBlank, ActivityIndicator,Toast} from 'antd-mobile'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import Editor from 'react-editor-md';
-
+import {addCommt} from './../../api/article'
 import Share from '../../components/Share'
 import {dateDiff} from '../../utils/time'
-
-
 import './style.less'
 import '../../static/css/share.min.css'
+import {getToken, getUser} from "../../utils/utils";
 class ArticleDetail extends React.Component{
     constructor(props){
         super(props)
@@ -17,15 +17,15 @@ class ArticleDetail extends React.Component{
             isShow:true,
             _visite:false,
             model:false,
-            comm:null
+            comm:null,
+            vue:'',
+            type:false
         }
+        this.Change = this.Change.bind(this)
     }
     componentDidMount() {
-
         let id = this.props.match.params.id
         this.props.init(id)
-console.log(window.returnCitySN['cname'])
-
     }
     componentWillReceiveProps(nextProps, nextContext) {
         document.title = `文章-${nextProps.list.article.list.title}`;
@@ -49,11 +49,49 @@ console.log(window.returnCitySN['cname'])
         })
     }
     setModel(e){
-        console.log(e)
         this.setState({
             model:true,
             comm:e
         })
+    }
+    Change(e){
+        this.setState({
+            vue:e.target.value
+        })
+    }
+    sub(e){
+        e.preventDefault()
+        if(getToken()){
+            if (this.state.vue.trim().length==0)return
+            let data={}
+            data.article = `${this.props.match.params.id}`
+            data.comments = this.state.vue
+            data.user =JSON.parse(getUser()).id
+            data.url = `/article/detail/${this.props.match.params.id}`
+            data.cip = window.returnCitySN['cip']
+            data.address = window.returnCitySN['cname']
+            console.log(data)
+            addCommt(getToken(),data).then(res=>{
+                Toast.success('评论成功',1)
+                this.props.init(this.props.match.params.id)
+                this.setState({
+                    vue:''
+                })
+            }).catch(err=>{
+                console.log(err.response)
+            })
+        }else{
+            Toast.fail('未登录',1)
+        }
+    }
+    reple(e){
+        this.setState({
+            type:true
+        },()=>{
+            this.textInput.focus();
+        })
+
+        console.log(e)
     }
     render() {
 
@@ -67,7 +105,7 @@ console.log(window.returnCitySN['cname'])
                             return(
                                 <div key={index} className='commit-body'>
                                     <div className='commit-body-img'>
-                                        <img src={item.user.user_imag?item.user.user_imag:item.user.user_image} alt=""/>
+                                        <img src={item.user.user_imag?item.user.user_imag:item.user.user_image?item.user.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/>
 
                                     </div>
                                     <div className='commit-body-text'>
@@ -120,7 +158,10 @@ console.log(window.returnCitySN['cname'])
                         }/>
                         {comm()}
                         <div className="footer">
-                            <input type="text" placeholder='说点什么吧'disabled='disabled'/>
+                            {getToken()?<form action='' onSubmit={(e)=>this.sub(e)}>
+                                <input type="text" value={this.state.vue} onChange={this.Change} placeholder='说点什么吧'/>
+                            </form>:<Link to={`/login/?next=/article/detail/${this.props.match.params.id}`}>登录后可评论</Link>}
+
                         </div>
 
                         <div id='model' onClick={()=>this.setState({_visite:false})} className={
@@ -159,24 +200,23 @@ console.log(window.returnCitySN['cname'])
                                     <div className="commit-main">
                                         <div className='commit-body'>
                                             <div className='commit-body-img'>
-                                                        <img src={this.state.comm.user.user_imag?this.state.comm.user.user_imag:this.state.comm.user.user_image} alt=""/>
-
+                                                        <img src={this.state.comm.user.user_imag?this.state.comm.user.user_imag:this.state.comm.user.user_image?this.state.comm.user.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/>
                                                     </div>
                                             <div className='commit-body-text'>
                                                         <h4>{this.state.comm.user.username}</h4>
                                                         <p>
                                                             {this.state.comm.comments}
                                                         </p>
-                                                        <p>{dateDiff(new Date(this.state.comm.add_time.replace(/-/g, "/")).getTime())}
+                                                        <p className='timer'>{dateDiff(new Date(this.state.comm.add_time.replace(/-/g, "/")).getTime())}
+                                                        <span onClick={()=>this.reple(this.state.comm)}>回复</span>
                                                         </p>
                                                     </div>
                                         </div>
                                         {this.state.comm.articlecommentreply_set.map((item,index)=>{
-                                            console.log(item)
                                             return(
                                                 <div key={index} className='commit-body'>
                                                     <div className='commit-body-img'>
-                                                        <img src={item.user.user_imag?item.user.user_imag:item.user.user_image} alt=""/>
+                                                        <img src={item.user.user_imag?item.user.user_imag:item.user.user_image?item.user.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/>
 
                                                     </div>
                                                     <div className='commit-body-text'>
@@ -184,8 +224,8 @@ console.log(window.returnCitySN['cname'])
                                                         <p>
                                                             回复 <span className='user'>{item.to_uids.username}</span> {item.comments}
                                                         </p>
-                                                        <p>{dateDiff(new Date(item.add_time.replace(/-/g, "/")).getTime())}
-
+                                                        <p className='timer'>{dateDiff(new Date(item.add_time.replace(/-/g, "/")).getTime())}
+                                                            <span onClick={()=>this.reple(item)}>回复</span>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -193,6 +233,10 @@ console.log(window.returnCitySN['cname'])
                                         })}
                                     </div>
                                 </div>
+                                {this.state.type?<form action=""  className='footer'>
+                                    <input type="text" placeholder='说点什么吧'ref={(input) => { this.textInput = input; }} />
+                                </form>:''}
+
                             </div>
                             :null}
 
