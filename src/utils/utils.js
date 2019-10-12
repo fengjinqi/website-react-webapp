@@ -35,11 +35,12 @@ export const getForumCommentCount=(item)=>{
 export const getQueryString=(paramer)=>{
     let urlParamArry =[]
     var url = window.location.href.split("?")[1]; /* 获取url里"?"后面的值 */
+    if(!url)return;
      if (url.indexOf("&") > 0) { /* 判断是否是一个参数还是多个参数 */
              urlParamArry = url.split("&"); /* 分开每个参数，并放到数组里 */
              for (var i = 0; i < urlParamArry.length; i++) {
                     var paramerName = urlParamArry[i].split("="); /* 把每个参数名和值分开，并放到数组里 */
-                     if (paramer == paramerName[0]) { /* 匹配输入的参数和数组循环出来的参数是否一样 */
+                     if (paramer === paramerName[0]) { /* 匹配输入的参数和数组循环出来的参数是否一样 */
                              return paramerName[1]; /* 返回想要的参数值 */
                          }
                  }

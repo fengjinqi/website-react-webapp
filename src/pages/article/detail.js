@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import Editor from 'react-editor-md';
-import {addCommt} from './../../api/article'
+import {addCommt,addCommtRep} from './../../api/article'
 import Share from '../../components/Share'
 import {dateDiff} from '../../utils/time'
 import './style.less'
@@ -19,13 +19,17 @@ class ArticleDetail extends React.Component{
             model:false,
             comm:null,
             vue:'',
-            type:false
+            type:false,
+            rep:null,
+            user:false
         }
         this.Change = this.Change.bind(this)
     }
     componentDidMount() {
         let id = this.props.match.params.id
         this.props.init(id)
+
+
     }
     componentWillReceiveProps(nextProps, nextContext) {
         document.title = `文章-${nextProps.list.article.list.title}`;
@@ -35,6 +39,7 @@ class ArticleDetail extends React.Component{
         this.setState({
             isShow:false
         })
+        if (getToken()&&JSON.parse(getUser()).id===nextProps.list.article.list.authors.id)this.setState({user:true})
     }
 
     getContent = ()=>{
@@ -49,10 +54,14 @@ class ArticleDetail extends React.Component{
         })
     }
     setModel(e){
-        this.setState({
-            model:true,
-            comm:e
-        })
+        if(getToken()){
+            this.setState({
+                model:true,
+                comm:e
+            })
+        }else{
+            this.props.history.push(`/login/?next=/article/detail/${this.props.match.params.id}`)
+        }
     }
     Change(e){
         this.setState({
@@ -70,12 +79,12 @@ class ArticleDetail extends React.Component{
             data.url = `/article/detail/${this.props.match.params.id}`
             data.cip = window.returnCitySN['cip']
             data.address = window.returnCitySN['cname']
-            console.log(data)
             addCommt(getToken(),data).then(res=>{
                 Toast.success('评论成功',1)
                 this.props.init(this.props.match.params.id)
                 this.setState({
-                    vue:''
+                    vue:'',
+                    rep:null
                 })
             }).catch(err=>{
                 console.log(err.response)
@@ -86,12 +95,37 @@ class ArticleDetail extends React.Component{
     }
     reple(e){
         this.setState({
-            type:true
+            type:true,
+            rep:e
         },()=>{
             this.textInput.focus();
         })
-
-        console.log(e)
+    }
+    subRep(e){
+        e.preventDefault()
+        if(getToken()){
+            if (this.state.vue.trim().length==0)return
+            let data={}
+            data.comments = this.state.vue
+            data.user =JSON.parse(getUser()).id
+            data.url = `/article/detail/${this.props.match.params.id}`
+            data.cip = window.returnCitySN['cip']
+            data.address = window.returnCitySN['cname']
+            data.to_uids =this.state.rep.user.id
+            data.aomments_id =this.state.rep.aomments_id
+            addCommtRep(getToken(),data).then(res=>{
+                console.log(res)
+                this.props.init(this.props.match.params.id)
+                this.setState({
+                    vue:'',
+                    rep:null,
+                    model:false
+                })
+                Toast.success('回复成功',1)
+            })
+        }else{
+            Toast.fail('未登录',1)
+        }
     }
     render() {
 
@@ -105,7 +139,8 @@ class ArticleDetail extends React.Component{
                             return(
                                 <div key={index} className='commit-body'>
                                     <div className='commit-body-img'>
-                                        <img src={item.user.user_imag?item.user.user_imag:item.user.user_image?item.user.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/>
+
+                                        <Link to={`/person/${item.user.id}`}><img src={item.user.user_imag?item.user.user_imag:item.user.user_image?item.user.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/></Link>
 
                                     </div>
                                     <div className='commit-body-text'>
@@ -141,7 +176,12 @@ class ArticleDetail extends React.Component{
                     <div className="main">
                         <div className='detail-header'>
                             <div className='detaile-header-img'>
-                                <img src={list.authors.user_imag?list.authors.user_imag:list.authors.user_image} alt=""/>
+                                {this.state.user?<Link to={`/person/`}>
+                                    <img src={list.authors.user_imag?list.authors.user_imag:list.authors.user_image} alt=""/></Link>
+                                    :<Link to={`/person/${list.authors.id}`}>
+                                        <img src={list.authors.user_imag?list.authors.user_imag:list.authors.user_image} alt=""/>
+                                    </Link>}
+
                                 <div className='detaile-header-info'>
                                     <h4>{list.authors.username}</h4>
                                     <span>{dateDiff(new Date(list.add_time.replace(/-/g, "/")).getTime())}发布</span>
@@ -233,8 +273,8 @@ class ArticleDetail extends React.Component{
                                         })}
                                     </div>
                                 </div>
-                                {this.state.type?<form action=""  className='footer'>
-                                    <input type="text" placeholder='说点什么吧'ref={(input) => { this.textInput = input; }} />
+                                {this.state.type?<form action=""  className='footer' onSubmit={(e)=>this.subRep(e)}>
+                                    <input type="text" placeholder='说点什么吧' value={this.state.vue} onChange={this.Change} onBlur={()=>this.setState({type:false,vue:'',rep:null})} ref={(input) => { this.textInput = input; }} />
                                 </form>:''}
 
                             </div>

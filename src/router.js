@@ -13,6 +13,7 @@ import myFollows from "./pages/my/myFollows";
 import Info from "./pages/my/myInfo";
 import InfoUpdate from "./pages/my/myInfoDe";
 import myMessageList from "./pages/my/myMessageList";
+import OthersPerson from "./pages/my/othersIndex";
   class Router extends React.Component{
     render() {
         return(
@@ -31,6 +32,7 @@ import myMessageList from "./pages/my/myMessageList";
                         <Route path='/person/info' component={Info}/>
                         <Route path='/person/update' component={InfoUpdate}/>
                         <Route path='/person/message' component={myMessageList}/>
+                        <Route path='/person/:id' component={OthersPerson}/>
 
                         <Route component={NotFound}/>
                         {/*<Redirect form='/*' to='/'/>*/}

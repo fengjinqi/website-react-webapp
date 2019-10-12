@@ -68,7 +68,12 @@ export const appGetMessage = (token)=>{
         method:'get'
     })
 }
-
+/**
+ * 已读
+ * @param token
+ * @param data
+ * @param id
+ */
 export const appPutMessage = (token,data,id)=>{
     return axios.request({
         url:`/api/AppMessage/${id}/`,
@@ -79,3 +84,11 @@ export const appPutMessage = (token,data,id)=>{
         method:'put'
     })
 }
+
+export const getOhtersInfo = (id)=>{
+    return axios.request({
+        url:`/api/all_info/${id}`,
+        method:'get'
+    })
+}
+

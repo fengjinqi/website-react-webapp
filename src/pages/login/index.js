@@ -34,14 +34,15 @@ class Login extends React.Component{
                 //Toast.success('登录成功',1)
                 getInfo(getJwt()).then(res=>{
                     setUser(res.data[0])
+                    if(getQueryString('next')){
+                        this.props.history.push(`${getQueryString('next')}`)
+                    }else{
+                        this.props.history.push('/person')
+                    }
                 })
-                if(getQueryString('next')){
-                    this.props.history.push(`${getQueryString('next')}`)
-                }else{
-                    this.props.history.push('/person')
-                }
 
             }).catch(err=>{
+                console.log(err)
                 Toast.fail(err.response.data.non_field_errors[0], 1);
             })
         }

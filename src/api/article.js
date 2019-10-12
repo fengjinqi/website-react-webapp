@@ -126,10 +126,29 @@ export const addMyFan = (data,token)=>{
         method: 'post'
     })
 }
-
+/**
+ * 文章评论
+ * @param token
+ * @param data
+ */
 export const addCommt = (token,data)=>{
     return axios.request({
         url:'/api/article_Comment/',
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        data,
+        method:'post'
+    })
+}
+/**
+ * 回复文章评论
+ * @param token
+ * @param data
+ */
+export const addCommtRep = (token,data)=>{
+    return axios.request({
+        url:'/api/comment_reply/',
         headers: {
             'Authorization':`JWT ${token}`
         },

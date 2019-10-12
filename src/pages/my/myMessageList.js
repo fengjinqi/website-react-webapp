@@ -21,7 +21,7 @@ class myMessageList extends React.Component{
         appGetMessage(getToken()).then(res=>{
             Toast.hide()
             console.log(res)
-            if (res.status==200){
+            if (res.status===200){
                 this.setState({
                     data:res.data
                 })
