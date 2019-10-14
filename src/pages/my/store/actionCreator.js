@@ -1,7 +1,8 @@
-import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST,MY_FORUM_LIST_PAGE,MY_FAN,MY_FOLLOW,MY_GETMESSAGECOUNT} from './actionTypes'
+import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST,MY_FORUM_LIST_PAGE,MY_FAN,
+    MY_FOLLOW,MY_GETMESSAGECOUNT,OTHERARTICLE,OTHERARTICLE_PAGE,OTHERFORUM,OTHERFORUM_PAGE} from './actionTypes'
 import {getInfo,getMessage} from '../../../api/user'
-import {getMyArticle,getMyArticleListPage,getMyFan,getMyFollow} from '../../../api/article'
-import {getMyForum,getMyForumListPage} from '../../../api/forum'
+import {getMyArticle,getMyArticleListPage,getMyFan,getMyFollow,otherArticles,otherArticlesPage} from '../../../api/article'
+import {getMyForum,getMyForumListPage,othersForum,othersForumPage} from '../../../api/forum'
 
 export const getMyInfo = (data)=>({
     type:MY_GETINFO,
@@ -107,6 +108,59 @@ export const getMessageCountAxios = (token)=>{
     return (dispatch)=>{
         getMessage(token).then(res=>{
             dispatch(getMessageCount(res.data))
+        })
+    }
+}
+
+export const getOthersArticleList =(data)=>({
+    type:OTHERARTICLE,
+    data
+})
+
+export const getOthersArticleListAxios = (id)=>{
+    return (dispatch)=>{
+        otherArticles(id).then(res=>{
+            dispatch(getOthersArticleList(res.data))
+        })
+    }
+}
+
+export const getOthersArticleListPages =(data)=>({
+    type:OTHERARTICLE_PAGE,
+    data
+})
+
+export const getOthersArticleListPageAxios = (id,page)=>{
+    return (dispatch)=>{
+        otherArticlesPage(id,page).then(res=>{
+            dispatch(getOthersArticleListPages(res.data))
+        })
+    }
+}
+
+
+export const getOthersForumList =(data)=>({
+    type:OTHERFORUM,
+    data
+})
+
+export const getOthersForumListAxios = (id)=>{
+    return (dispatch)=>{
+        othersForum(id).then(res=>{
+            dispatch(getOthersForumList(res.data))
+        })
+    }
+}
+
+export const getOthersForumListPages =(data)=>({
+    type:OTHERFORUM_PAGE,
+    data
+})
+
+export const getOthersForumListPagesAxios = (id,page)=>{
+    return (dispatch)=>{
+        othersForumPage(id,page).then(res=>{
+            dispatch(getOthersForumListPages(res.data))
         })
     }
 }

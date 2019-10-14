@@ -88,7 +88,7 @@ const alert = Modal.alert;
                         <div className="container-header">
                             <div className='container-header-main'>
                                 <img src={this.props.image} alt=""/>
-                                <Link to='/person/info' className='user'><span>{this.props.name}</span><Icon type='right
+                                <Link to={`/person/info/${this.props.id}`} className='user'><span>{this.props.name}</span><Icon type='right
 '/></Link>
 
                             </div>
@@ -97,28 +97,28 @@ const alert = Modal.alert;
                         <Item
                             arrow="horizontal"
                             thumb="https://www.fengjinqi.com/static/img/文章.png"
-                            onClick={() => {getToken()?this.props.history.push('/person/article'):this.props.history.push('/login')}}
+                            onClick={() => {this.props.history.push(`/person/article/${this.props.id}`)}}
                         >
                             文章
                         </Item>
                         <Item
                             arrow="horizontal"
                             thumb="https://www.fengjinqi.com/static/img/帖子.png"
-                            onClick={() => {getToken()?this.props.history.push('/person/forum'):this.props.history.push('/login')}}
+                            onClick={() => {this.props.history.push(`/person/forum/${this.props.id}`)}}
                         >
                             帖子
                         </Item>
                         <Item
                             arrow="horizontal"
                             thumb="https://www.fengjinqi.com/static/img/我的粉丝.png"
-                            onClick={() => {getToken()?this.props.history.push('/person/myFan'):this.props.history.push('/login')}}
+                            onClick={() => {this.props.history.push(`/person/fan/${this.props.id}`)}}
                         >
                             粉丝
                         </Item>
                         <Item
                             arrow="horizontal"
                             thumb="https://www.fengjinqi.com/static/img/我的关注.png"
-                            onClick={() => {getToken()?this.props.history.push('/person/myFollows'):this.props.history.push('/login')}}
+                            onClick={() => {this.props.history.push(`/person/fan/${this.props.id}`)}}
                         >
                             关注
                         </Item>
@@ -137,12 +137,14 @@ LoginMain.propsTypes = {
     image:PropTypes.string,
     itemLogOut:PropTypes.func,
     history:PropTypes.func,
-    type:PropTypes.bool
+    type:PropTypes.bool,
+    id:PropTypes.string
 
 
 }
 LoginMain.defaultProps = {
      image:'https://www.fengjinqi.com/static/img/pc-icon.png',
-     type:true
+     type:true,
+     id:''
 }
 export default LoginMain

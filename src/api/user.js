@@ -1,4 +1,5 @@
 import axios from '../utils/api.request'
+import {getToken, getUser} from "../utils/utils";
 
 /**
  * 登录
@@ -13,7 +14,7 @@ export const Login = (data)=>{
     })
 }
 /**
- * 获取用户信息
+ * 获取我的用户信息
  * @param token
  */
 export const getInfo = (token) =>{
@@ -84,11 +85,20 @@ export const appPutMessage = (token,data,id)=>{
         method:'put'
     })
 }
-
+/**
+ * 查看用户信息
+ * @param id
+ */
 export const getOhtersInfo = (id)=>{
     return axios.request({
         url:`/api/all_info/${id}`,
         method:'get'
     })
 }
-
+let id =JSON.parse(getUser())?JSON.parse(getUser()).id:''
+export const getOhtersFan = (id)=>{
+    return axios.request({
+        url:`/api/UserFollowOther/?fan=${id}&user_id=${id}`,
+        method:'get',
+    })
+}

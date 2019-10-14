@@ -1,4 +1,5 @@
-import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST_PAGE,MY_FORUM_LIST,MY_FAN,MY_FOLLOW,MY_GETMESSAGECOUNT} from './actionTypes'
+import {MY_GETINFO,MY_ARTICLE_LIST,MY_ARTICLE_LIST_PAGE,MY_FORUM_LIST_PAGE,MY_FORUM_LIST,MY_FAN,MY_FOLLOW,
+    MY_GETMESSAGECOUNT,OTHERARTICLE,OTHERARTICLE_PAGE,OTHERFORUM_PAGE,OTHERFORUM} from './actionTypes'
 const defaultState = {
     info:[],
     myArticle:[],
@@ -7,7 +8,12 @@ const defaultState = {
     myForumPage:[],
     myFan:[],
     myFollow:[],
-    myMessageType:[]
+    myMessageType:[],
+    otherArticle:[],
+    otherArticlePage:[],
+    otherForum:[],
+    otherForumPage:[],
+
 }
 
 export default (state=defaultState,action)=>{
@@ -56,6 +62,31 @@ export default (state=defaultState,action)=>{
             return {
                 ...state,
                 myMessageType: action.data
+            }
+        case OTHERARTICLE:
+            return {
+                ...state,
+                otherArticle:action.data.results,
+                otherArticlePage:action.data
+            }
+        case OTHERARTICLE_PAGE:
+            return {
+                ...state,
+                otherArticlePage:action.data,
+                otherArticle:state.otherArticle.concat(action.data.results)
+            }
+
+        case OTHERFORUM:
+            return {
+                ...state,
+                otherForum:action.data.results,
+                otherForumPage:action.data
+            }
+        case OTHERFORUM_PAGE:
+            return {
+                ...state,
+                otherForum:state.otherForum.concat(action.data.results),
+                otherForumPage:action.data
             }
         default:
             return state

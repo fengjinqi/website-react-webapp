@@ -156,3 +156,24 @@ export const addCommtRep = (token,data)=>{
         method:'post'
     })
 }
+/**
+ * 查看其它用户文章
+ * @param id
+ */
+export const otherArticles = (id)=>{
+    return axios.request({
+        url:`/api/PersonOthers/?pk=${id}`,
+        method:'get'
+    })
+}
+/**
+ * 查看其它用户文章分页
+ * @param id
+ * @param page
+ */
+export const otherArticlesPage = (id,page)=>{
+    return axios.request({
+        url:`/api/PersonOthers/?pk=${id}&page=${page}`,
+        method:'get'
+    })
+}
