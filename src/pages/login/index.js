@@ -40,10 +40,9 @@ class Login extends React.Component{
                         this.props.history.push('/person')
                     }
                 })
-
             }).catch(err=>{
-                console.log(err)
-                Toast.fail(err.response.data.non_field_errors[0], 1);
+                console.log(err.response)
+               // Toast.fail(err.response.data.non_field_errors[0], 1);
             })
         }
     }

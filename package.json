@@ -130,8 +130,7 @@
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
     },
     "moduleFileExtensions": [
-      "web.js",
-      "js",
+      "web.js",      "js",
       "web.ts",
       "ts",
       "web.tsx",

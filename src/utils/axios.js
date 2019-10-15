@@ -1,4 +1,5 @@
 import axios  from "axios"
+import {Toast} from 'antd-mobile'
 const addErrorLog = errorInfo => {
     const { statusText, status, request: { responseURL } } = errorInfo
     let info = {
@@ -19,6 +20,7 @@ class HttpRequest {
     getInsideConfig () {
         const config = {
             baseURL: this.baseUrl,
+           // timeout:30000,
             headers: {
                 //
             }
@@ -52,10 +54,16 @@ class HttpRequest {
             this.destroy(url)
             let errorInfo = error.response
             if (!errorInfo) {
-                const { request: { statusText, status }, config } = JSON.parse(JSON.stringify(error))
+                //const { request: { statusText, status}, config } = JSON.parse(JSON.stringify(error))
+                const {...config } = JSON.parse(JSON.stringify(error))
+                /*if(config.message=='timeout of 30000ms exceeded'){
+                    Toast.hide()
+                    Toast.fail('网络连接超时',1)
+
+                }*/
                 errorInfo = {
-                    statusText,
-                    status,
+                    statusText:config.message,
+                    status:400,
                     request: { responseURL: config.url }
                 }
             }

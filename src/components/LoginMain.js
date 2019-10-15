@@ -118,7 +118,7 @@ const alert = Modal.alert;
                         <Item
                             arrow="horizontal"
                             thumb="https://www.fengjinqi.com/static/img/我的关注.png"
-                            onClick={() => {this.props.history.push(`/person/fan/${this.props.id}`)}}
+                            onClick={() => {this.props.history.push(`/person/follows/${this.props.id}`)}}
                         >
                             关注
                         </Item>

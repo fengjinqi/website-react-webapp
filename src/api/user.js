@@ -1,5 +1,4 @@
 import axios from '../utils/api.request'
-import {getToken, getUser} from "../utils/utils";
 
 /**
  * 登录
@@ -95,10 +94,45 @@ export const getOhtersInfo = (id)=>{
         method:'get'
     })
 }
-let id =JSON.parse(getUser())?JSON.parse(getUser()).id:''
-export const getOhtersFan = (id)=>{
+
+/**
+ * 查看用户的粉丝
+ *
+ * @param id
+ * @param user_id
+ */
+export const getOhtersFan = (id,user_id)=>{
     return axios.request({
-        url:`/api/UserFollowOther/?fan=${id}&user_id=${id}`,
+        url:`/api/UserFollowOther/?fan=${id}&user_id=${user_id}`,
         method:'get',
+    })
+}
+/**
+ * 查看用户的关注
+ * @param id
+ * @param user_id
+ */
+export const getOhtersFollows = (id,user_id)=>{
+    return axios.request({
+        url:`/api/UserFollowOther/?follow=${id}&user_id=${user_id}`,
+        method:'get',
+    })
+}
+/**
+ * 查看用户的关注进行当前用户取消关注
+ * @param id
+ * @param follow
+ * @param user_id
+ * @param token
+ * @param data
+ */
+export const delOhtersFollows = (id,follow,type,user_id,token,data)=>{
+    return axios.request({
+        url:`/api/UserFollowOther/${id}/?${type}=${follow}&user_id=${user_id}`,
+        data,
+        headers: {
+            'Authorization':`JWT ${token}`
+        },
+        method:'delete',
     })
 }
