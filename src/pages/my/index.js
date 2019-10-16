@@ -32,7 +32,6 @@ class Person extends React.Component{
         }
     }*/
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log(nextProps.info.detail )
         if(nextProps.info.detail){
             delToken()
             delUser()

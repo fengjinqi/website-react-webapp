@@ -1,10 +1,11 @@
-import React from 'react'
-import {NavBar, Icon, WingBlank, ActivityIndicator,Toast} from 'antd-mobile'
+import React, {Fragment} from 'react'
+import {NavBar, Icon, WingBlank, ActivityIndicator,Toast,Button} from 'antd-mobile'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import Editor from 'react-editor-md';
-import {addCommt,addCommtRep} from './../../api/article'
+import {addCommt, addCommtRep, addMyFan, delMyFan} from './../../api/article'
+import {getOhtersFan} from './../../api/user'
 import Share from '../../components/Share'
 import {dateDiff} from '../../utils/time'
 import './style.less'
@@ -21,27 +22,62 @@ class ArticleDetail extends React.Component{
             vue:'',
             type:false,
             rep:null,
-            user:false
+            user:false,
+            follows:false,
+            follows_id:null
         }
         this.Change = this.Change.bind(this)
     }
     componentDidMount() {
         let id = this.props.match.params.id
+
         this.props.init(id)
 
 
     }
     componentWillReceiveProps(nextProps, nextContext) {
+
         document.title = `文章-${nextProps.list.article.list.title}`;
         document.getElementById('desc').setAttribute('content',nextProps.list.article.list.desc)
         document.getElementById('keywords').setAttribute('content',nextProps.list.article.list.keywords)
         window.sessionStorage.setItem('k',nextProps.list.article.list.content)
-        this.setState({
-            isShow:false
-        })
-        if (getToken()&&JSON.parse(getUser()).id===nextProps.list.article.list.authors.id)this.setState({user:true})
-    }
 
+        if (getToken()&&JSON.parse(getUser()).id===nextProps.list.article.list.authors.id)this.setState({user:true})
+        getOhtersFan(nextProps.list.article.list.authors.id,getUser()?JSON.parse(getUser()).id:'').then(res=>{
+            this.setState({
+                isShow:false
+            })
+            if (!getUser()) return
+            if(res.data.length>0){
+                for (let item in res.data){
+                    if(res.data[item].fan.id===JSON.parse(getUser()).id){
+                        this.setState({follows:true,follows_id:res.data[item].id})
+                    }
+                }
+            }
+
+        })
+    }
+    del(){
+        if(!getToken())this.props.history.push(`/login/?next=/article/detail/${this.props.match.params.id}`)
+        delMyFan(this.state.follows_id,getToken()).then(res=>{
+            if(res.status===204){
+                Toast.success('取消关注成功', 1);
+                this.setState({follows:false})
+            }
+        })
+    }
+    add(e){
+        if(!getToken())this.props.history.push(`/login/?next=/article/detail/${this.props.match.params.id}`)
+        let data={
+            follow:e.id,
+            fan:JSON.parse(getUser()).id
+        }
+        addMyFan(data,getToken()).then(res=>{
+            this.props.init(this.props.match.params.id)
+            Toast.success(res.data.message, 1);
+        })
+    }
     getContent = ()=>{
         return this.props.list.article.list.content
     }
@@ -188,6 +224,9 @@ class ArticleDetail extends React.Component{
                                     <span className='click'>阅读 {list.click_nums}</span>
                                {/*     <span className='comment'>{getCommentCount(list)}</span>*/}
                                 </div>
+                                {this.state.follows?<Button type="primary" inline size="small" style={{ marginRight: '4px' }} onClick={()=>this.del()}>已关注</Button>:<Button type="ghost" inline size="small" style={{ marginRight: '4px' }} onClick={()=>this.add(list.authors)}>关注</Button>}
+
+
                             </div>
                             <h1>{list.title}</h1>
                         </div>

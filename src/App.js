@@ -26,13 +26,14 @@ const footer ={
     fontSize:'16px'
 }
 const meun=(props)=>{
-    if(props.location.pathname==='/'||props.location.pathname==='/person/'||props.location.pathname==='/person'||props.location.pathname==='/person/:id'){
+    if(props.location.pathname==='/'||props.location.pathname==='/person/'||props.location.pathname==='/person'||props.location.pathname==='/forum/'){
         return (
             <div className="App">
                 {/*            <Home/>*/}
                 {props.children}
                 <div style={footer}>
                     <NavLink to='/' exact  activeStyle={{ fontWeight: "bold",  color: "red" }}>文章</NavLink>
+                    <NavLink to='/forum/' exact  activeStyle={{ fontWeight: "bold",  color: "red" }}>论坛</NavLink>
                     <NavLink to='/person/' exact   activeStyle={{ fontWeight: "bold",  color: "red" }}>我的</NavLink>
                 </div>
             </div>

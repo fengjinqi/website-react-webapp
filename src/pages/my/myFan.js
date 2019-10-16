@@ -4,7 +4,7 @@ import { getFanAxios} from "./store/actionCreator";
 import {getToken, getUser} from "../../utils/utils";
 import {ActivityIndicator, Icon, NavBar, WingBlank, Button, Toast} from "antd-mobile";
 import {addMyFan} from './../../api/article'
-import {HashRouter, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {delOhtersFollows} from "../../api/user";
 let user_id =JSON.parse(getUser())?JSON.parse(getUser()).id:''
 class MyForum extends Component{
@@ -22,7 +22,6 @@ class MyForum extends Component{
         this.setState({
             isShow:false,
         });
-
     }
     add(e){
         let data={
@@ -40,7 +39,6 @@ class MyForum extends Component{
             this.props.history.push(`/login/?next=/person/${this.props.match.params.id}`);
             return
         }
-        console.log(e)
         let data={
             id:e.fan.id,
             access:e.access,
@@ -72,7 +70,10 @@ class MyForum extends Component{
                     {list.results?list.results.map(item=>{
                         return(
                             <div key={item.id} className='fan-main'>
-                                <div><img src={item.fan.user_imag?item.fan.user_imag:item.fan.user_image?item.fan.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/></div>
+                                <div>
+                                    <Link to={`/person/${item.fan.id}`}>
+                                            <img src={item.fan.user_imag?item.fan.user_imag:item.fan.user_image?item.fan.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/></Link>
+                                </div>
                                 <div className='fan-main-user'>{item.fan.username}</div>
                                 <div>{item.access?<Button type='primary'inline size="small"onClick={()=>this.del(item)}>已关注</Button>:<Button type='ghost'inline size="small" onClick={()=>this.add(item)}>关注</Button>}</div>
 

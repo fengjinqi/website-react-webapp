@@ -1,5 +1,5 @@
 import React,{Fragment} from 'react'
-import {Icon, NavBar,InputItem,List,Toast} from "antd-mobile";
+import {Icon, NavBar,Toast} from "antd-mobile";
 import {connect} from 'react-redux'
 import {getToken} from "../../utils/utils";
 import { createForm } from 'rc-form';

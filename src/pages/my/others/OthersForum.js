@@ -1,6 +1,5 @@
 import React,{Component,Fragment} from 'react'
 import {connect} from 'react-redux'
-import { getMyForumListAxios, getMyForumListPageAxios} from "./../store/actionCreator";
 import {getForumCommentCount} from "../../../utils/utils";
 import {ActivityIndicator, Icon, ListView, NavBar, PullToRefresh, WingBlank} from "antd-mobile";
 import ReactDOM from "react-dom";

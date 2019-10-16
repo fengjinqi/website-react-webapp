@@ -19,6 +19,7 @@ import OthersArticles from "./pages/my/others/OthersArticles";
 import OthersForum from "./pages/my/others/OthersForum";
 import OthersFan from "./pages/my/others/OthersFan";
 import OthersFollows from "./pages/my/others/OthersFollows";
+import Forum from "./pages/forum";
   class Router extends React.Component{
     render() {
         return(
@@ -43,6 +44,7 @@ import OthersFollows from "./pages/my/others/OthersFollows";
                         <Route path='/person/forum/:id'exact component={OthersForum}/>
                         <Route path='/person/fan/:id'exact component={OthersFan}/>
                         <Route path='/person/follows/:id'exact component={OthersFollows}/>
+                        <Route path='/forum/' exact component={Forum}/>
                         <Route component={NotFound}/>
                         {/*<Redirect form='/*' to='/'/>*/}
                     </Switch>

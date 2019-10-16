@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import './style.less'
 import {getOhtersInfo} from './../../api/user'
 import LoginMain from '../../components/LoginMain'
+import {getToken, getUser} from "../../utils/utils";
 class OthersPerson extends React.Component{
     constructor(props){
         super(props)

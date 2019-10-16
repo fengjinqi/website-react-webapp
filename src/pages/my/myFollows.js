@@ -4,7 +4,7 @@ import {getFollowAxios} from "./store/actionCreator";
 import {getToken} from "../../utils/utils";
 import {ActivityIndicator, Icon, NavBar, WingBlank, Button, Toast} from "antd-mobile";
 import {delMyFan} from './../../api/article'
-import {HashRouter, NavLink} from "react-router-dom";
+import { Link} from "react-router-dom";
 
 class MyFollows extends Component{
     constructor(props) {
@@ -18,15 +18,13 @@ class MyFollows extends Component{
         this.props.getInit()
     }
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log(nextProps)
         this.setState({
             isShow:false,
         });
-
     }
     del(e){
         delMyFan(e,getToken()).then(res=>{
-            if(res.status==204){
+            if(res.status===204){
                 Toast.success('取消关注成功', 1);
                 this.props.getInit()
             }
@@ -52,7 +50,11 @@ class MyFollows extends Component{
                     {list.results?list.results.map(item=>{
                         return(
                             <div key={item.id} className='fan-main'>
-                                <div><img src={item.follow.user_imag?item.follow.user_imag:item.follow.user_image?item.follow.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/></div>
+                                <div>
+                                    <Link to={`/person/${item.follow.id}`}>
+                                            <img src={item.follow.user_imag?item.follow.user_imag:item.follow.user_image?item.follow.user_image:'https://www.fengjinqi.com/static/img/pc-icon.png'} alt=""/></Link>
+
+                                </div>
                                 <div className='fan-main-user'>{item.follow.username}</div>
                                 <div><Button type='primary'inline size="small" onClick={()=>this.del(item.id)}>取消关注</Button></div>
 

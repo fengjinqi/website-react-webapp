@@ -1,11 +1,11 @@
 import React,{Component} from 'react'
 import ReactDOM from 'react-dom'
 import { ActivityIndicator, WingBlank, ListView,SearchBar,PullToRefresh} from 'antd-mobile';
-import {NavLink,HashRouter} from 'react-router-dom'
+import {NavLink, HashRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import {getArticleCate} from './../../api/article'
-import {getCommentCount} from './../../utils/utils'
+import {getCommentCount, getToken, getUser} from './../../utils/utils'
 import './style.less'
 class Home extends Component{
     constructor(props) {
@@ -21,7 +21,7 @@ class Home extends Component{
             categrty:null,
             height: document.documentElement.clientHeight,
             useBodyScroll: false,
-            search:true
+            search:true,
         };
         this.changeState = this.changeState.bind(this)
     }
@@ -50,7 +50,7 @@ class Home extends Component{
             height:document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).offsetTop-50,
             page:(nextProps.page.next ? ++this.state.page:'')
         });
-        console.log(this.state.page)
+
     }
 
     /**
@@ -99,7 +99,6 @@ class Home extends Component{
 
     }
     render() {
-
         //const {isShow} = this.props
         const row =  (rowData, sectionID, rowID) => {
             return(
@@ -108,8 +107,20 @@ class Home extends Component{
                     <div>
                         <div className='list-header'>
                             <div className='list-header-left one-txt-cut'>
-                                <img src={rowData.authors.user_imag?rowData.authors.user_imag:rowData.authors.user_image} alt=""/>
-                                {rowData.authors.username}
+                                {getUser()? <Link to={JSON.parse(getUser()).id===rowData.authors.id?`/person/`:`/person/${rowData.authors.id}`}>
+                                    <img src={rowData.authors.user_imag?rowData.authors.user_imag:rowData.authors.user_image} alt=""/>
+                                    {rowData.authors.username}
+                                </Link>
+                                :    <Link to={`/person/${rowData.authors.id}`}>
+                                        <img src={rowData.authors.user_imag?rowData.authors.user_imag:rowData.authors.user_image} alt=""/>
+                                        {rowData.authors.username}
+                                    </Link>
+                                }
+                                    {/*<Link to={`/person/${rowData.authors.id}`}>*/}
+                                    {/*    <img src={rowData.authors.user_imag?rowData.authors.user_imag:rowData.authors.user_image} alt=""/>*/}
+                                    {/*    {rowData.authors.username}*/}
+                                    {/*</Link>*/}
+
                             </div>
                             <div className='list-header-right'><span>{rowData.category.name}</span></div>
                         </div>

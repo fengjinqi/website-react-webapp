@@ -1,6 +1,6 @@
 import React,{Component,Fragment}  from 'react'
 import PropTypes from 'prop-types';
-import {Icon, NavBar,List,Modal} from "antd-mobile";
+import {Icon, NavBar,List,Modal,WingBlank} from "antd-mobile";
 import {Link} from "react-router-dom";
 import {getToken} from '../utils/utils'
 import Button from "antd-mobile/lib/button";
@@ -88,7 +88,10 @@ const alert = Modal.alert;
                         <div className="container-header">
                             <div className='container-header-main'>
                                 <img src={this.props.image} alt=""/>
-                                <Link to={`/person/info/${this.props.id}`} className='user'><span>{this.props.name}</span><Icon type='right
+                                <Link to={`/person/info/${this.props.id}`} className='user'>
+                                    <span>{this.props.name}</span>
+
+                                    <Icon type='right
 '/></Link>
 
                             </div>
