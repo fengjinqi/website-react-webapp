@@ -2,25 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44436192-442b-4a16-b807-bceaa165e45d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/forum/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/forum/detail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/forum/store/actionCreators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/forum/store/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/forum/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/forum/store/reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginMain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/forum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/forum.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/article/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/article/detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/article/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/article/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/myFan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/myFan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/myFollows.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/myFollows.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/myInfoDe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/myInfoDe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/others/OthersFan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/others/OthersFan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/others/OthersFollows.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/others/OthersFollows.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/others/OthersForum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/others/OthersForum.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my/othersIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my/othersIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/forum/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/forum/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/style.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/css/comm.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/comm.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,56 +30,65 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/my/othersIndex.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/LoginMain.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#47#0" expanded="true" />
-                <element signature="e#470#3956#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/forum/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+            <state relative-caret-position="1235">
+              <caret line="117" column="97" selection-start-line="117" selection-start-column="97" selection-end-line="117" selection-end-column="97" />
+              <folding>
+                <element signature="e#0#46#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/router.js">
+        <entry file="file://$PROJECT_DIR$/src/pages/forum/store/reducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="41" column="85" lean-forward="true" selection-start-line="41" selection-start-column="85" selection-end-line="41" selection-end-column="85" />
+            <state relative-caret-position="252">
+              <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/forum/store/actionTypes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/forum/detail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="346" lean-forward="true" selection-start-line="346" selection-end-line="346" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#10269#11090#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/forum/store/actionCreators.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="61" column="23" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#87#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/article/store/actionCreator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="2" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
               </folding>
@@ -94,18 +97,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/article/detail.js">
+        <entry file="file://$PROJECT_DIR$/src/api/forum.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="224" column="98" lean-forward="true" selection-start-line="224" selection-start-column="98" selection-end-line="224" selection-end-column="98" />
-              <folding>
-                <element signature="n#!!block;n#componentWillUnmount#0;n#ArticleDetail#0" />
-                <element signature="n#!!block;n#setModel#0;n#ArticleDetail#0" />
-                <element signature="n#!!block;n#Change#0;n#ArticleDetail#0" />
-                <element signature="n#!!block;n#sub#0;n#ArticleDetail#0" />
-                <element signature="n#!!block;n#reple#0;n#ArticleDetail#0" />
-                <element signature="n#!!block;n#subRep#0;n#ArticleDetail#0" />
-              </folding>
+            <state relative-caret-position="3">
+              <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -122,11 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>parseInt</find>
-      <find>halfamonth</find>
-      <find>socshare</find>
-      <find>mqq</find>
-      <find>wx</find>
       <find>slideInUp</find>
       <find>animated-fade-in</find>
       <find>main</find>
@@ -152,9 +142,15 @@
       <find>AxiosResponse</find>
       <find>.fan</find>
       <find>.am-navbar</find>
+      <find>.txt-cut</find>
+      <find>txt-cut</find>
+      <find>list-title-left</find>
+      <find>search</find>
+      <find>reple</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\lenovo\Desktop\website-react-webapp\src</dir>
+      <dir>C:\Users\lenovo\Desktop\website-react-webapp\src\pages</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -163,16 +159,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/webpack.config.js" />
-        <option value="$PROJECT_DIR$/src/pages/login/style.less" />
-        <option value="$PROJECT_DIR$/src/store/reducer.js" />
-        <option value="$PROJECT_DIR$/src/api/home.js" />
-        <option value="$PROJECT_DIR$/src/components/ListView.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/pages/my/myArticle.js" />
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/src/pages/my/myForum.js" />
-        <option value="$PROJECT_DIR$/src/pages/home/style.less" />
         <option value="$PROJECT_DIR$/src/pages/home/store/actionTypes.js" />
         <option value="$PROJECT_DIR$/src/pages/home/store/actionCreators.js" />
         <option value="$PROJECT_DIR$/src/pages/home/store/reducer.js" />
@@ -185,7 +175,6 @@
         <option value="$PROJECT_DIR$/src/pages/my/others/myArticle.js" />
         <option value="$PROJECT_DIR$/src/api/article.js" />
         <option value="$PROJECT_DIR$/src/pages/my/others/OthersArticles.js" />
-        <option value="$PROJECT_DIR$/src/api/forum.js" />
         <option value="$PROJECT_DIR$/src/pages/my/store/actionTypes.js" />
         <option value="$PROJECT_DIR$/src/pages/my/others/myForum.js" />
         <option value="$PROJECT_DIR$/src/pages/my/store/reducer.js" />
@@ -207,13 +196,20 @@
         <option value="$PROJECT_DIR$/src/pages/home/index.js" />
         <option value="$PROJECT_DIR$/src/pages/article/style.less" />
         <option value="$PROJECT_DIR$/src/static/css/comm.less" />
-        <option value="$PROJECT_DIR$/src/pages/article/detail.js" />
         <option value="$PROJECT_DIR$/src/pages/my/myFan.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/LoginMain.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/store/reducer.js" />
+        <option value="$PROJECT_DIR$/src/pages/home/style.less" />
         <option value="$PROJECT_DIR$/src/pages/forum/index.js" />
         <option value="$PROJECT_DIR$/src/router.js" />
+        <option value="$PROJECT_DIR$/src/api/forum.js" />
+        <option value="$PROJECT_DIR$/src/pages/article/detail.js" />
+        <option value="$PROJECT_DIR$/src/pages/forum/store/actionCreators.js" />
+        <option value="$PROJECT_DIR$/src/pages/forum/store/actionTypes.js" />
+        <option value="$PROJECT_DIR$/src/pages/forum/detail.js" />
+        <option value="$PROJECT_DIR$/src/pages/forum/store/reducer.js" />
       </list>
     </option>
   </component>
@@ -238,11 +234,6 @@
             <path>
               <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Users\lenovo\Desktop\website-react-webapp" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\lenovo\Desktop\website-react-webapp" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -255,13 +246,22 @@
               <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Users\lenovo\Desktop\website-react-webapp" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="components" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Users\lenovo\Desktop\website-react-webapp" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="article" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\lenovo\Desktop\website-react-webapp" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="article" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="store" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -269,6 +269,21 @@
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="forum" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\lenovo\Desktop\website-react-webapp" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="forum" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="store" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\lenovo\Desktop\website-react-webapp" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="home" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="website-react-webapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -286,7 +301,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/my/others" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/forum" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -304,17 +319,17 @@
     <property name="ts.external.directory.path" value="D:\Program Files\JetBrains\PhpStorm 2019.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\pages\forum" />
+      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\pages\forum\store" />
+      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\pages\my\others" />
+      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\pages\my" />
+      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\static\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lenovo\Desktop\website-react-webapp\public" />
       <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\static\js" />
       <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\static\css" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\pages\my\others" />
-      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\pages\my" />
-      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\static\img" />
-      <recent name="C:\Users\lenovo\Desktop\website-react-webapp\src\utils" />
-      <recent name="D:\Users\admin\Desktop\website-react-webapp\src\static\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -389,23 +404,25 @@
       <workItem from="1570843194521" duration="17183000" />
       <workItem from="1571017659330" duration="34067000" />
       <workItem from="1571189128200" duration="20075000" />
+      <workItem from="1571276506202" duration="2721000" />
+      <workItem from="1571362675450" duration="10590000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="380883000" />
+    <option name="totallyTimeSpent" value="394194000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.21482602" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.21482602" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5016949" side_tool="true" weight="0.21406959" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49319214" visible="true" weight="0.2596774" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49319214" visible="true" weight="0.2596774" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -449,120 +466,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/my/myForum.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <element signature="n#!!block;n#changeState#0;n#MyForum#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/eslint/lib/linter/code-path-analysis/fork-context.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="185" column="4" selection-start-line="185" selection-start-column="4" selection-end-line="185" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/lodash/add.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/store/actionTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/store/reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-editor-md/dist/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="338" selection-start-line="338" selection-end-line="338" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="3813" column="18" selection-start-line="3813" selection-start-column="18" selection-end-line="3813" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/js-cookie/src/js.cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-484">
-          <caret line="100" column="33" lean-forward="true" selection-start-line="100" selection-start-column="33" selection-end-line="100" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#665#869#0" />
-            <element signature="e#892#956#0" />
-            <element signature="e#1048#2621#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/article/store/actionCreator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/article/store/actionTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/article/store/reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/store/actionCreators.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="57" column="18" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/my/myMessageList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2302">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../website/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -603,34 +506,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/forum.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/my/store/actionCreator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="150" column="10" lean-forward="true" selection-start-line="150" selection-start-column="10" selection-end-line="150" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/my/store/actionTypes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="45" column="18" lean-forward="true" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -719,16 +598,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/my/others/OthersForum.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1078">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/my/myInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1838">
@@ -753,23 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="105" column="62" selection-start-line="105" selection-start-column="55" selection-end-line="105" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2254">
-          <caret line="161" column="34" lean-forward="true" selection-start-line="161" selection-start-column="34" selection-end-line="161" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/style.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="100" column="21" lean-forward="true" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -802,19 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/article.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="110" column="24" lean-forward="true" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
-          <folding>
-            <element signature="e#2341#2387#0" />
-            <element signature="e#2426#2609#0" />
-            <element signature="e#2610#2658#0" />
-            <element signature="e#2700#2881#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/my/myFollows.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -835,31 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/my/othersIndex.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/article/detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="224" column="98" lean-forward="true" selection-start-line="224" selection-start-column="98" selection-end-line="224" selection-end-column="98" />
-          <folding>
-            <element signature="n#!!block;n#componentWillUnmount#0;n#ArticleDetail#0" />
-            <element signature="n#!!block;n#setModel#0;n#ArticleDetail#0" />
-            <element signature="n#!!block;n#Change#0;n#ArticleDetail#0" />
-            <element signature="n#!!block;n#sub#0;n#ArticleDetail#0" />
-            <element signature="n#!!block;n#reple#0;n#ArticleDetail#0" />
-            <element signature="n#!!block;n#subRep#0;n#ArticleDetail#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -867,41 +681,263 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LoginMain.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/my/others/OthersForum.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+        <state relative-caret-position="176">
+          <caret line="113" column="30" lean-forward="true" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
           <folding>
-            <element signature="e#0#47#0" expanded="true" />
-            <element signature="e#470#3956#0" />
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/my/store/actionCreator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="e#0#209#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        <state relative-caret-position="362">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LoginMain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/my/othersIndex.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/forum/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/home/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="22" column="33" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/comm.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="97" column="12" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/home/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="98" column="3" selection-start-line="98" selection-start-column="3" selection-end-line="98" selection-end-column="3" />
+          <folding>
+            <element signature="e#853#1110#0" />
+            <element signature="e#1123#1211#0" />
+            <element signature="e#1226#1685#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/article.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-33">
+          <caret line="60" column="3" lean-forward="true" selection-start-line="60" selection-start-column="3" selection-end-line="60" selection-end-column="3" />
+          <folding>
+            <element signature="e#2341#2387#0" />
+            <element signature="e#2426#2609#0" />
+            <element signature="e#2610#2658#0" />
+            <element signature="e#2700#2881#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/home/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2706">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="150" column="21" lean-forward="true" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#2260#2369#0" />
+            <element signature="e#2428#2719#0" />
+            <element signature="e#3095#5695#0" />
+            <element signature="e#6464#7289#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/home/store/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/forum/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        <state relative-caret-position="1235">
+          <caret line="117" column="97" selection-start-line="117" selection-start-column="97" selection-end-line="117" selection-end-column="97" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="41" column="85" lean-forward="true" selection-start-line="41" selection-start-column="85" selection-end-line="41" selection-end-column="85" />
+        <state relative-caret-position="171">
+          <caret line="48" column="51" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/home/store/actionCreators.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="45" selection-start-line="45" selection-end-line="61" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/forum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/article/detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="290" column="80" selection-start-line="290" selection-start-column="80" selection-end-line="290" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="n#!!block;n#componentWillUnmount#0;n#ArticleDetail#0" />
+            <element signature="n#!!block;n#setModel#0;n#ArticleDetail#0" />
+            <element signature="n#!!block;n#Change#0;n#ArticleDetail#0" />
+            <element signature="n#!!block;n#sub#0;n#ArticleDetail#0" />
+            <element signature="n#!!block;n#subRep#0;n#ArticleDetail#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/article/store/actionCreator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/article/store/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/forum/store/actionCreators.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="61" column="23" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/forum/detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="346" lean-forward="true" selection-start-line="346" selection-end-line="346" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#10269#11090#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/forum/store/actionTypes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/forum/store/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
         </state>
       </provider>
     </entry>

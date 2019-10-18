@@ -4,14 +4,16 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {actionCreators} from './store'
 import Editor from 'react-editor-md';
-import {addCommt, addCommtRep, addMyFan, delMyFan} from './../../api/article'
+import { addMyFan, delMyFan} from './../../api/article'
+import {ForumComment,ForumCommentRep} from './../../api/forum'
 import {getOhtersFan} from './../../api/user'
 import Share from '../../components/Share'
 import {dateDiff} from '../../utils/time'
-import './style.less'
+
 import '../../static/css/share.min.css'
 import {getToken, getUser} from "../../utils/utils";
-class ArticleDetail extends React.Component{
+
+class ForumDetail extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -36,14 +38,14 @@ class ArticleDetail extends React.Component{
 
     }
     componentWillReceiveProps(nextProps, nextContext) {
+        console.log(nextProps.list)
+        document.title = `论坛-${nextProps.list.forum.detail.title}`;
+        document.getElementById('desc').setAttribute('content',nextProps.list.forum.detail.desc)
+        document.getElementById('keywords').setAttribute('content',nextProps.list.forum.detail.keywords)
+        window.sessionStorage.setItem('k',nextProps.list.forum.detail.content)
 
-        document.title = `文章-${nextProps.list.article.list.title}`;
-        document.getElementById('desc').setAttribute('content',nextProps.list.article.list.desc)
-        document.getElementById('keywords').setAttribute('content',nextProps.list.article.list.keywords)
-        window.sessionStorage.setItem('k',nextProps.list.article.list.content)
-
-        if (getToken()&&JSON.parse(getUser()).id===nextProps.list.article.list.authors.id)this.setState({user:true})
-        getOhtersFan(nextProps.list.article.list.authors.id,getUser()?JSON.parse(getUser()).id:'').then(res=>{
+        if (getToken()&&JSON.parse(getUser()).id===nextProps.list.forum.detail.authors.id)this.setState({user:true})
+        getOhtersFan(nextProps.list.forum.detail.authors.id,getUser()?JSON.parse(getUser()).id:'').then(res=>{
             this.setState({
                 isShow:false
             })
@@ -59,7 +61,7 @@ class ArticleDetail extends React.Component{
         })
     }
     del(){
-        if(!getToken())this.props.history.push(`/login/?next=/article/detail/${this.props.match.params.id}`)
+        if(!getToken())this.props.history.push(`/login/?next=/forum/detail/${this.props.match.params.id}`)
         delMyFan(this.state.follows_id,getToken()).then(res=>{
             if(res.status===204){
                 Toast.success('取消关注成功', 1);
@@ -68,7 +70,7 @@ class ArticleDetail extends React.Component{
         })
     }
     add(e){
-        if(!getToken())this.props.history.push(`/login/?next=/article/detail/${this.props.match.params.id}`)
+        if(!getToken())this.props.history.push(`/login/?next=/forum/detail/${this.props.match.params.id}`)
         let data={
             follow:e.id,
             fan:JSON.parse(getUser()).id
@@ -79,7 +81,7 @@ class ArticleDetail extends React.Component{
         })
     }
     getContent = ()=>{
-        return this.props.list.article.list.content
+        return this.props.list.forum.detail.content
     }
     componentWillUnmount() {
         this.props.Unmount()
@@ -96,7 +98,7 @@ class ArticleDetail extends React.Component{
                 comm:e
             })
         }else{
-            this.props.history.push(`/login/?next=/article/detail/${this.props.match.params.id}`)
+            this.props.history.push(`/login/?next=/forum/detail/${this.props.match.params.id}`)
         }
     }
     Change(e){
@@ -109,13 +111,13 @@ class ArticleDetail extends React.Component{
         if(getToken()){
             if (this.state.vue.trim().length==0)return
             let data={}
-            data.article = `${this.props.match.params.id}`
+            data.forums = `${this.props.match.params.id}`
             data.comments = this.state.vue
             data.user =JSON.parse(getUser()).id
-            data.url = `/article/detail/${this.props.match.params.id}`
+            data.url = `/forum/detail/${this.props.match.params.id}`
             data.cip = window.returnCitySN['cip']
             data.address = window.returnCitySN['cname']
-            addCommt(getToken(),data).then(res=>{
+            ForumComment(getToken(),data).then(res=>{
                 Toast.success('评论成功',1)
                 this.props.init(this.props.match.params.id)
                 this.setState({
@@ -145,12 +147,13 @@ class ArticleDetail extends React.Component{
             let data={}
             data.comments = this.state.vue
             data.user =JSON.parse(getUser()).id
-            data.url = `/article/detail/${this.props.match.params.id}`
+            data.url = `/forum/detail/${this.props.match.params.id}`
             data.cip = window.returnCitySN['cip']
             data.address = window.returnCitySN['cname']
-            data.to_uids =this.state.rep.user.id
-            data.aomments_id =this.state.rep.aomments_id
-            addCommtRep(getToken(),data).then(res=>{
+            data.to_Parent_Comments =this.state.rep.user.id
+            data.forums =this.state.rep.forums
+            data.parent_comments =this.state.rep.parent_comments
+            ForumCommentRep(data,getToken()).then(res=>{
                 console.log(res)
                 this.props.init(this.props.match.params.id)
                 this.setState({
@@ -166,13 +169,13 @@ class ArticleDetail extends React.Component{
     }
     render() {
 
-        let {list} = this.props.list.article
+        let list = this.props.list.forum.detail
         const comm=()=>{
             return(
                 <div className='commit'>
                     <p className='commit-p'></p>
                     <div className="commit-main">
-                        {list.article_comment_set.map((item,index)=>{
+                        {list.comment_set.map((item,index)=>{
                             return(
                                 <div key={index} className='commit-body'>
                                     <div className='commit-body-img'>
@@ -186,7 +189,7 @@ class ArticleDetail extends React.Component{
                                             {item.comments}
                                         </p>
                                         <p>{dateDiff(new Date(item.add_time.replace(/-/g, "/")).getTime())}
-                                            <span onClick={()=>this.setModel(item)} className={item.articlecommentreply_set.length>0?'active':''}>{item.articlecommentreply_set.length>0?item.articlecommentreply_set.length:''}回复</span>
+                                            <span onClick={()=>this.setModel(item)} className={item.parent_comment_set.length>0?'active':''}>{item.parent_comment_set.length>0?item.parent_comment_set.length:''}回复</span>
                                         </p>
                                     </div>
                                 </div>
@@ -208,7 +211,7 @@ class ArticleDetail extends React.Component{
                     rightContent={
                         <Icon key="1" type="ellipsis"onClick={this.show} />
                     }
-                >文章</NavBar>
+                >论坛</NavBar>
                 {!this.state.isShow?
                     <div className="main">
                         <div className='detail-header'>
@@ -240,7 +243,7 @@ class ArticleDetail extends React.Component{
                         <div className="footer">
                             {getToken()?<form action='' onSubmit={(e)=>this.sub(e)}>
                                 <input type="text" value={this.state.vue} onChange={this.Change} placeholder='说点什么吧'/>
-                            </form>:<Link to={`/login/?next=/article/detail/${this.props.match.params.id}`}>登录后可评论</Link>}
+                            </form>:<Link to={`/login/?next=/forum/detail/${this.props.match.params.id}`}>登录后可评论</Link>}
 
                         </div>
 
@@ -292,7 +295,7 @@ class ArticleDetail extends React.Component{
                                                         </p>
                                                     </div>
                                         </div>
-                                        {this.state.comm.articlecommentreply_set.map((item,index)=>{
+                                        {this.state.comm.parent_comment_set.map((item,index)=>{
                                             return(
                                                 <div key={index} className='commit-body'>
                                                     <div className='commit-body-img'>
@@ -302,7 +305,7 @@ class ArticleDetail extends React.Component{
                                                     <div className='commit-body-text'>
                                                         <h4>{item.user.username}</h4>
                                                         <p>
-                                                            回复 <span className='user'>{item.to_uids.username}</span> {item.comments}
+                                                            回复 <span className='user'>{item.to_Parent_Comments.username}</span> {item.comments}
                                                         </p>
                                                         <p className='timer'>{dateDiff(new Date(item.add_time.replace(/-/g, "/")).getTime())}
                                                             <span onClick={()=>this.reple(item)}>回复</span>
@@ -335,13 +338,13 @@ const mapState=(state)=>({
 
 const mapDispatch = (dispatch)=>({
     init(id){
-        dispatch(actionCreators.getArticleDetailAxios(id))
+        dispatch(actionCreators.getgetDetailePageAxios(id))
     },
     Unmount(){
         dispatch(actionCreators.ArticleDel())
     }
 
 })
-export default connect(mapState,mapDispatch)(ArticleDetail)
+export default connect(mapState,mapDispatch)(ForumDetail)
 
 //TODO 前端，移动端，小程序、app、node、php、Java、python、服务器、数据库、大数据、云计算、人工智能、UI、操作系统、爬虫、go、c/c++ c#
