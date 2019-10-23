@@ -79,10 +79,14 @@ class MyArticles extends React.Component{
                                 </div>
                                 <div className='list-header-right'><span>{rowData.category.name}</span></div>
                             </div>
-                            <div className='list-title'>
+                            {rowData.list_pic?<div className='list-title'>
                                 <div className='list-title-left txt-cut'>{rowData.title}</div>
                                 <div className='list-title-right'><img src={rowData.list_pic} alt=""/></div>
-                            </div>
+                            </div>:<div className='list-title'style={{height:'auto'}}>
+                                <div className='list-title-left txt-cut'style={{width:'100%'}}>{rowData.title}</div>
+
+                            </div>}
+
                             <div className='list-desc'>
                                 {rowData.desc}
                             </div>

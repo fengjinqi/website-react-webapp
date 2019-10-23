@@ -63,9 +63,9 @@ export const getArticleCate = ()=>{
  * @param name
  * @param page
  */
-export const getArticleSaerch = (name,page)=>{
+export const getArticleSaerch = (name,page,n)=>{
     return axios.request({
-        url: `api/article_list/?category=${name}&page=${page}`,
+        url: n?`api/article_list/?title=${name}&page=${page}`:`api/article_list/?category=${name}&page=${page}`,
         method: 'get'
     })
 }

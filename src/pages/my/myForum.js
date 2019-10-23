@@ -94,7 +94,7 @@ class MyForum extends Component{
                                     {getForumCommentCount(rowData)}
                                 </span>
                                 </div>
-                                <div className='list-footer-right'><NavLink to={{pathname:`/article/detail/${rowData.id}`}}>阅读全文→</NavLink></div>
+                                <div className='list-footer-right'><NavLink to={{pathname:`/forum/detail/${rowData.id}`}}>阅读全文→</NavLink></div>
                             </div>
                         </div>
                     </div>

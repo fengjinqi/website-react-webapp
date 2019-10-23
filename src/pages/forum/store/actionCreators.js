@@ -39,9 +39,9 @@ export const getSerachPage = (data)=>({
 	data
 })
 
-export const getSerachAxios = (name,page,type)=>{
+export const getSerachAxios = (name,page,type,n)=>{
 	return (dispatch)=>{
-		ForumListSearch(name,page).then(res=>{
+		ForumListSearch(name,page,n).then(res=>{
 			type?dispatch(getSerachPage(res.data)):dispatch(getSerach(res.data))
 		})
 	}

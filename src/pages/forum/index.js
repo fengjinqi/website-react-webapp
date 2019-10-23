@@ -1,10 +1,10 @@
 import React,{Component,Fragment} from 'react'
-import {ForumList,ForumCategory} from '../../api/forum'
+import {ForumCategory} from '../../api/forum'
 import {ListView, PullToRefresh, SearchBar} from "antd-mobile";
 import {connect} from 'react-redux'
 import {actionCreators} from "./store";
 import {HashRouter, Link, NavLink} from "react-router-dom";
-import {getCommentCount, getForumCommentCount, getUser} from "../../utils/utils";
+import { getForumCommentCount, getUser} from "../../utils/utils";
 import ReactDOM from "react-dom";
 class Index extends Component{
     constructor(props){
@@ -23,6 +23,7 @@ class Index extends Component{
             search:true,
         }
         this.changeState = this.changeState.bind(this)
+        this.submit = this.submit.bind(this)
     }
     changeState(list){
         const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
@@ -44,8 +45,13 @@ class Index extends Component{
     onEndReached = ()=>{
         if(this.state.page){
             this.setState({ refreshing: true, isLoading: true, });
-            window.sessionStorage.getItem('forumserach')?this.props.getSerach(window.sessionStorage.getItem('forumserach'),this.state.page,true):this.props.getHomePage(this.state.page);
-
+            if ( window.sessionStorage.getItem('forumserach')) {
+                this.props.getSerach(window.sessionStorage.getItem('forumserach'),this.state.page,true)
+            }else if(window.sessionStorage.getItem('forumserachs')){
+                this.props.getSerach(window.sessionStorage.getItem('forumserach'),this.state.page,true,true)
+            }else{
+                this.props.getHomePage(this.state.page)
+            }
         }
 
     }
@@ -56,7 +62,7 @@ class Index extends Component{
                 categrty:res.data
             })
         })
-
+        window.sessionStorage.clear()
     }
     componentWillReceiveProps(nextProps, nextContext) {
         this.changeState(nextProps.list)
@@ -69,18 +75,25 @@ class Index extends Component{
         });
     }
     serach(e){
+        window.sessionStorage.clear()
         this.setState({
             search:true,
             page:1
         })
         window.sessionStorage.setItem('forumserach',e)
-        console.log(e)
         this.props.getSerach(e,1,)
         document.getElementsByClassName('am-list-view-scrollview')[0].scrollTop=0
 
     }
     submit(e){
-
+        window.sessionStorage.clear()
+        this.setState({
+            search:true,
+            page:1
+        })
+        window.sessionStorage.setItem('forumserachs',e)
+        this.props.getSerach(e,1,'',true)
+        document.getElementsByClassName('am-list-view-scrollview')[0].scrollTop=0
     }
     render() {
         const row =  (rowData, sectionID, rowID) => {
@@ -169,8 +182,8 @@ const mapDispatch =(dispatch)=>({
     getHomePage(page){
         dispatch(actionCreators.getListActionPageAxios(page))
     },
-    getSerach(name,page,type){
-        dispatch(actionCreators.getSerachAxios(name,page,type))
+    getSerach(name,page,type,n){
+        dispatch(actionCreators.getSerachAxios(name,page,type,n))
     }
 })
 export default connect(mapState,mapDispatch)(Index)

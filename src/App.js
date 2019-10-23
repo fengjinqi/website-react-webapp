@@ -32,9 +32,9 @@ const meun=(props)=>{
                 {/*            <Home/>*/}
                 {props.children}
                 <div style={footer}>
-                    <NavLink to='/' exact  activeStyle={{ fontWeight: "bold",  color: "red" }}>文章</NavLink>
-                    <NavLink to='/forum/' exact  activeStyle={{ fontWeight: "bold",  color: "red" }}>论坛</NavLink>
-                    <NavLink to='/person/' exact   activeStyle={{ fontWeight: "bold",  color: "red" }}>我的</NavLink>
+                    <NavLink to='/' exact  activeStyle={{ fontWeight: "bold",  color: "#356dd0" }}>文章</NavLink>
+                    <NavLink to='/forum/' exact  activeStyle={{ fontWeight: "bold",  color: "#356dd0" }}>论坛</NavLink>
+                    <NavLink to='/person/' exact   activeStyle={{ fontWeight: "bold",  color: "#356dd0" }}>我的</NavLink>
                 </div>
             </div>
         );

@@ -65,9 +65,9 @@ export const  ForumCategory = () =>{
     })
 }
 
-export const  ForumListSearch = (name,page) =>{
+export const  ForumListSearch = (name,page,n) =>{
     return axios.request({
-        url:`/api/ForumListView/?category=${name}&page=${page}`,
+        url:n?`api/ForumListView/?title=${name}&page=${page}`:`/api/ForumListView/?category=${name}&page=${page}`,
         method:'get'
     })
 }

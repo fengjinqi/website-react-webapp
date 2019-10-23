@@ -42,7 +42,8 @@ class Login extends React.Component{
                 })
             }).catch(err=>{
                 console.log(err.response)
-               // Toast.fail(err.response.data.non_field_errors[0], 1);
+                //Toast.fail(err.response.data.non_field_errors[0], 1);
+                Toast.fail('登录失败,请检查用户名与密码',3)
             })
         }
     }

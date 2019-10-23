@@ -19,6 +19,26 @@
     <script src="/markdown/editormd.js"></script>
     <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
     <script>
+      var os = function() {
+        var ua = navigator.userAgent,
+                isWindowsPhone = /(?:Windows Phone)/.test(ua),
+                isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+                isAndroid = /(?:Android)/.test(ua),
+                isFireFox = /(?:Firefox)/.test(ua),
+                isChrome = /(?:Chrome|CriOS)/.test(ua),
+                isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+                isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+                isPc = !isPhone && !isAndroid && !isSymbian;
+        return {
+          isTablet: isTablet,
+          isPhone: isPhone,
+          isAndroid: isAndroid,
+          isPc: isPc
+        };
+      }();
+      if(os.isPc) {
+        window.location.href='https://www.fengjinqi.com'
+      }
       var _hmt = _hmt || [];
       (function() {
         var hm = document.createElement("script");

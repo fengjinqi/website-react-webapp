@@ -53,9 +53,9 @@ export const getSerachPage = (data)=>({
 	data
 })
 
-export const getSerachAxios = (name,page,type)=>{
+export const getSerachAxios = (name,page,type,n)=>{
 	return (dispatch)=>{
-		getArticleSaerch(name,page).then(res=>{
+		getArticleSaerch(name,page,n).then(res=>{
 			type?dispatch(getSerachPage(res.data)):dispatch(getSerach(res.data))
 		})
 	}

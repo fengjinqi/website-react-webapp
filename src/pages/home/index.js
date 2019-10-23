@@ -24,6 +24,7 @@ class Home extends Component{
             search:true,
         };
         this.changeState = this.changeState.bind(this)
+        this.submit = this.submit.bind(this)
     }
     changeState(list){
         const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
@@ -39,7 +40,8 @@ class Home extends Component{
                   categrty:res.data
               })
           })
-          window.sessionStorage.removeItem('serach')
+          window.sessionStorage.clear()
+
     }
     componentWillReceiveProps(nextProps, nextContext) {
         this.changeState(nextProps.list)
@@ -65,8 +67,15 @@ class Home extends Component{
         })
         return count+=item.article_comment_set.length
     }*/
-    submit(){
-        console.log('search')
+    submit(e){
+        window.sessionStorage.clear()
+        this.setState({
+            search:true,
+            page:1
+        })
+        window.sessionStorage.setItem('serachs',e)
+        this.props.getSerach(e,1,'',true)
+        document.getElementsByClassName('am-list-view-scrollview')[0].scrollTop=0
     }
    /**
     *TODO 下拉刷新
@@ -81,7 +90,14 @@ class Home extends Component{
     onEndReached = ()=>{
         if(this.state.page){
             this.setState({ refreshing: true, isLoading: true, });
-            window.sessionStorage.getItem('serach')?this.props.getSerach(window.sessionStorage.getItem('serach'),this.state.page,true):this.props.getHomePage(this.state.page);
+            if (window.sessionStorage.getItem('serach')) {
+                this.props.getSerach(window.sessionStorage.getItem('serach'),this.state.page,true)
+            }else if(window.sessionStorage.getItem('serachs')){
+                this.props.getSerach(window.sessionStorage.getItem('serachs'),this.state.page,true,true)
+            }else{
+                this.props.getHomePage(this.state.page)
+            }
+
 
         }
 
@@ -89,6 +105,8 @@ class Home extends Component{
 
 
     serach(e){
+        window.sessionStorage.clear()
+
         this.setState({
             search:true,
             page:1
@@ -124,10 +142,24 @@ class Home extends Component{
                             </div>
                             <div className='list-header-right'><span>{rowData.category.name}</span></div>
                         </div>
-                        <div className='list-title'>
-                            <div className='list-title-left txt-cut'>{rowData.title}</div>
-                            <div className='list-title-right'><img src={rowData.list_pic} alt=""/></div>
-                        </div>
+                        {rowData.list_pic?
+                            <div className='list-title'>
+
+                                <div className='list-title-left txt-cut'>{rowData.title}</div>
+                                <div className='list-title-right'><img src={rowData.list_pic} alt=""/></div>
+
+                            </div>
+                            :
+                            <div className='list-title'style={{height:'auto'}}>
+                                <div className='list-title-left txt-cut' style={{width:'100%'}}>{rowData.title}</div>
+                            </div>
+                        }
+                        {/*<div className='list-title'>*/}
+                        {/*    */}
+                        {/*    <div className='list-title-left txt-cut'>{rowData.title}</div>*/}
+                        {/*    {rowData.list_pic?<div className='list-title-right'><img src={rowData.list_pic} alt=""/></div>:''}*/}
+
+                        {/*</div>*/}
                         <div className='list-desc'>
                             {rowData.desc}
                         </div>
@@ -201,8 +233,8 @@ const mapDispatch = (dispatch) => ({
     getHomePage(page){
           dispatch(actionCreators.getHomePage(page))
     },
-    getSerach(name,page,type){
-          dispatch(actionCreators.getSerachAxios(name,page,type))
+    getSerach(name,page,type,n){
+          dispatch(actionCreators.getSerachAxios(name,page,type,n))
     }
 })
 export default connect(mapState,mapDispatch)(Home)

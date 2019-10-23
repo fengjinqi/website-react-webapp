@@ -48,7 +48,6 @@ class MyForum extends Component{
             Toast.info(res.data.message,1)
             this.props.getInit()
         })
-
     }
     render() {
         const {list} = this.props
